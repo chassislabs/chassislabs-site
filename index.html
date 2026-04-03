@@ -9,19 +9,32 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background: #0f172a;
       color: #e2e8f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 0;
     }
 
-    /* Hero title */
-    h1 {
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+    }
+    .hero h1 {
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 15px;
@@ -29,53 +42,149 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
-    /* Subtitle */
-    p.subtitle {
+    .hero p {
       font-size: 1.25rem;
       opacity: 0.75;
       margin-bottom: 30px;
     }
-
-    /* Email / footer */
-    p.contact {
-      font-size: 1rem;
-      opacity: 0.6;
-      margin-top: 40px;
-      word-break: break-all;
-    }
-
-    /* Button style (optional CTA) */
-    a.cta {
+    .hero a.cta {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 28px;
+      padding: 14px 32px;
       font-size: 1rem;
       font-weight: 600;
-      color: #ffffff;
+      color: #fff;
       background: #4f46e5;
       border-radius: 8px;
-      text-decoration: none;
       transition: background 0.3s ease;
     }
-    a.cta:hover {
+    .hero a.cta:hover {
       background: #3b82f6;
+    }
+
+    /* Section Titles */
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+      background: linear-gradient(90deg, #4f46e5, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.section-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      opacity: 0.75;
+    }
+
+    /* Services Grid */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .service-card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .service-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #3b82f6;
+    }
+    .service-card p {
+      opacity: 0.75;
+    }
+
+    /* Contact Section */
+    .contact {
+      text-align: center;
+      padding: 60px 20px;
+      background: #0f172a;
+    }
+    .contact p {
+      font-size: 1rem;
+      opacity: 0.75;
+      margin-bottom: 10px;
+    }
+    .contact a {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      opacity: 0.5;
+      font-size: 0.9rem;
     }
 
     /* Responsive */
     @media (max-width: 480px) {
-      h1 { font-size: 2.25rem; }
-      p.subtitle { font-size: 1rem; }
+      .hero h1 { font-size: 2.25rem; }
+      .hero p { font-size: 1rem; }
+      h2 { font-size: 1.75rem; }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>Chassis Labs</h1>
-    <p class="subtitle">The Backbone for Next-Gen Real Estate Projects</p>
-    <a href="mailto:info@chassislabs.com" class="cta">Get in Touch</a>
-  </div>
 
-  <p class="contact">info@chassislabs.com</p>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Chassis Labs</h1>
+    <p>The Backbone for Next-Gen Real Estate Projects</p>
+    <a href="mailto:info@chassislabs.com" class="cta">Get in Touch</a>
+  </section>
+
+  <!-- About -->
+  <section class="container" id="about">
+    <h2>About Us</h2>
+    <p class="section-text">Chassis Labs provides AI-driven frameworks and tools for real estate development companies. We help developers optimize projects, streamline decisions, and build smarter foundations for next-gen developments.</p>
+  </section>
+
+  <!-- Services -->
+  <section class="container" id="services">
+    <h2>Our Services</h2>
+    <p class="section-text">We combine AI intelligence with structured frameworks to deliver actionable insights and project efficiency.</p>
+    <div class="services">
+      <div class="service-card">
+        <h3>Project Analytics</h3>
+        <p>Real-time AI insights for land acquisition, market trends, and ROI optimization.</p>
+      </div>
+      <div class="service-card">
+        <h3>Design Frameworks</h3>
+        <p>Structured planning systems to streamline construction and development processes.</p>
+      </div>
+      <div class="service-card">
+        <h3>Automation Tools</h3>
+        <p>Reduce repetitive tasks and accelerate project timelines with AI-powered automation.</p>
+      </div>
+      <div class="service-card">
+        <h3>Decision Support</h3>
+        <p>Smart AI dashboards to support strategic development and investment decisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email us at <a href="mailto:info@chassislabs.com">info@chassislabs.com</a> for a consultation to see how Chassis Labs can strengthen your development projects.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Chassis Labs. All rights reserved.
+  </footer>
+
 </body>
 </html>
