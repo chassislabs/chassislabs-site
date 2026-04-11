@@ -1,1 +1,929 @@
-<html><body>Test deck</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chassis Labs — Investor Deck</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css" />
+
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    :root {
+      --black:    #0A0A0A;
+      --darkgray: #141414;
+      --midgray:  #1E1E1E;
+      --cardgray: #242424;
+      --border:   #2A2A2A;
+      --white:    #FFFFFF;
+      --offwhite: #F0F0F0;
+      --muted:    #888888;
+      --dimmed:   #555555;
+      --blue:     #3B82F6;
+      --amber:    #F59E0B;
+      --purple:   #8B5CF6;
+      --green:    #10B981;
+      --teal:     #14B8A6;
+    }
+
+    .reveal-viewport { background: var(--black); }
+    .reveal .slides { font-family: 'Calibri', 'Segoe UI', sans-serif; }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Calibri', 'Segoe UI', sans-serif;
+      text-transform: none;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    .reveal p, .reveal li, .reveal span { margin: 0; }
+    .reveal ul { list-style: none; padding: 0; }
+
+    /* ── SLIDE BASE ───────────────────────────────── */
+    .reveal .slides section {
+      background: var(--black);
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      text-align: left;
+      box-sizing: border-box;
+    }
+
+    .slide-inner {
+      padding: 52px 64px 40px;
+      height: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP ACCENT BAR ───────────────────────────── */
+    .accent-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+    }
+
+    /* ── EYEBROW LABEL ────────────────────────────── */
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    /* ── HEADLINES ────────────────────────────────── */
+    .headline-xl {
+      font-size: 58px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 28px;
+    }
+    .headline-lg {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .headline-md {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .subhead {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 780px;
+    }
+
+    /* ── CARDS ────────────────────────────────────── */
+    .card-grid {
+      display: grid;
+      gap: 14px;
+      flex: 1;
+      align-content: start;
+    }
+    .card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .card {
+      background: var(--cardgray);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 20px 20px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+    }
+    .card.blue::before  { background: var(--blue); }
+    .card.amber::before { background: var(--amber); }
+    .card.purple::before { background: var(--purple); }
+    .card.green::before { background: var(--green); }
+    .card.teal::before  { background: var(--teal); }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .card-body {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── AGENT CARD (full-width rows) ─────────────── */
+    .agent-card {
+      background: var(--cardgray);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px 14px 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .agent-card.flagship {
+      background: #0D2144;
+      border-color: var(--blue);
+    }
+    .agent-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+    }
+    .agent-card.blue::before   { background: var(--blue); }
+    .agent-card.amber::before  { background: var(--amber); }
+    .agent-card.purple::before { background: var(--purple); }
+    .agent-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .flagship-tag {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--blue);
+      border: 1px solid var(--blue);
+      padding: 1px 6px;
+      border-radius: 3px;
+      letter-spacing: 1px;
+    }
+    .agent-card-body {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ── VERTICAL COLUMN (agent suite overview) ───── */
+    .vertical-col {
+      background: var(--cardgray);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      flex: 1;
+    }
+    .vertical-header {
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .vertical-body { padding: 10px 16px 14px; }
+    .vertical-agent {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--offwhite);
+    }
+    .vertical-agent:last-child { border-bottom: none; }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── STAT CALLOUT ─────────────────────────────── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 12px;
+    }
+    .stat-block { }
+    .stat-number {
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── STEPS (How it works) ─────────────────────── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      flex: 1;
+      align-content: start;
+    }
+    .step-card {
+      background: var(--cardgray);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+    }
+    .step-num {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .step-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .step-body { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── PRICING ──────────────────────────────────── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      flex: 1;
+      align-content: start;
+    }
+    .pricing-card {
+      background: var(--cardgray);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .pricing-top-bar { height: 5px; }
+    .pricing-body { padding: 18px 20px; }
+    .pricing-tier { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .pricing-price { font-size: 26px; font-weight: 700; margin-bottom: 10px; }
+    .pricing-desc { font-size: 11px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+    .pricing-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 12px; }
+    .pricing-item {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 11px; color: var(--offwhite); margin-bottom: 6px;
+    }
+    .pricing-item .dot { margin-top: 4px; flex-shrink: 0; }
+
+    /* ── COMPARISON ───────────────────────────────── */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      flex: 1;
+      align-content: start;
+    }
+    .compare-card {
+      border-radius: 6px;
+      padding: 20px 24px;
+      border: 1px solid;
+    }
+    .compare-card.us { background: #0D2144; border-color: var(--blue); }
+    .compare-card.them { background: var(--cardgray); border-color: var(--border); }
+    .compare-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+    .compare-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 12px; line-height: 1.5; margin-bottom: 10px;
+    }
+    .compare-item .dot { margin-top: 4px; flex-shrink: 0; }
+
+    /* ── ROADMAP TIMELINE ─────────────────────────── */
+    .timeline-track {
+      display: flex;
+      gap: 16px;
+      flex: 1;
+      align-items: flex-start;
+      margin-top: 24px;
+    }
+    .timeline-item { flex: 1; }
+    .tl-dot-row {
+      display: flex; align-items: center; margin-bottom: 12px;
+    }
+    .tl-dot {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid; flex-shrink: 0;
+    }
+    .tl-dot.filled { }
+    .tl-line { flex: 1; height: 2px; background: var(--border); }
+    .tl-phase { font-size: 11px; font-weight: 700; margin-bottom: 4px; letter-spacing: 1px; }
+    .tl-card {
+      background: var(--cardgray);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .tl-card-top { height: 4px; }
+    .tl-card-body { padding: 14px 16px; }
+    .tl-card-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .tl-card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    /* ── CLOSING SLIDE ────────────────────────────── */
+    .closing-circles {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 45%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .closing-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid;
+    }
+
+    /* ── ARIA SLIDE ───────────────────────────────── */
+    .aria-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      flex: 1;
+      align-content: start;
+    }
+    .aria-feature {
+      display: flex;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .aria-feature:last-child { border-bottom: none; }
+    .aria-bar { width: 4px; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
+    .aria-feature-title { font-size: 12px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+    .aria-feature-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+    /* ── USE OF FUNDS ─────────────────────────────── */
+    .funds-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .fund-card {
+      background: var(--cardgray);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 20px;
+    }
+    .fund-pct { font-size: 40px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+    .fund-label { font-size: 12px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .fund-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    /* ── NAV HINT ─────────────────────────────────── */
+    .reveal .controls { color: var(--dimmed); }
+    .reveal .progress { background: var(--border); }
+    .reveal .progress span { background: var(--blue); }
+
+    /* ── SECTION HEADER BAR ──────────────────────── */
+    .section-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 44px;
+      display: flex; align-items: center;
+      padding: 0 64px;
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+    }
+    .slide-inner.has-bar { padding-top: 66px; }
+
+    /* ── SEPARATOR LINE ───────────────────────────── */
+    .sep { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 01 — TITLE                                       -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="accent-bar" style="background:var(--blue);"></div>
+  <div class="slide-inner" style="justify-content:center; gap:0;">
+    <p class="eyebrow" style="color:var(--muted); margin-bottom:16px;">CHASSIS LABS</p>
+    <h1 class="headline-xl" style="font-size:64px; margin-bottom:22px;">AI Infrastructure<br>for Real Estate.</h1>
+    <p class="subhead" style="font-size:15px; max-width:680px;">Purpose-built AI agents for developers, brokerages, and construction teams<br>across British Columbia and beyond.</p>
+    <hr class="sep" style="width:120px; margin:32px 0 14px; border-color:var(--dimmed);">
+    <p style="font-size:11px; color:var(--dimmed);">chassislabs.com &nbsp;·&nbsp; Investor Overview &nbsp;·&nbsp; 2026</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 02 — THE PROBLEM                                 -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide-inner" style="gap:20px;">
+    <div>
+      <p class="eyebrow" style="color:var(--blue);">THE PROBLEM</p>
+      <h2 class="headline-lg">Real estate teams are<br>drowning in manual work.</h2>
+    </div>
+    <div class="card-grid card-grid-3" style="flex:1;">
+      <div class="card blue">
+        <p class="card-title">Warranty Claims Are a Nightmare</p>
+        <p class="card-body">BC's 2-5-10 warranty program generates thousands of claims annually. Developers track them manually — spreadsheets, email threads, and missed deadlines.</p>
+      </div>
+      <div class="card amber">
+        <p class="card-title">Customer Inquiries Fall Through the Cracks</p>
+        <p class="card-body">Buyers and homeowners expect instant answers 24/7. Sales teams, coordinators, and PMs are stretched too thin to respond at the speed customers demand.</p>
+      </div>
+      <div class="card purple">
+        <p class="card-title">Construction Coordination is Reactive</p>
+        <p class="card-body">Daily reports, deficiency lists, RFIs, and supplier follow-ups consume hours of PM time every day — time better spent on execution, not administration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 03 — THE SOLUTION                                -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide-inner" style="gap:20px;">
+    <div>
+      <p class="eyebrow" style="color:var(--green);">THE SOLUTION</p>
+      <h2 class="headline-lg">Chassis Labs builds AI agents<br>that work while your team sleeps.</h2>
+      <p class="subhead">We deploy purpose-built AI agents for every function in a real estate operation — from warranty and customer service to construction management and sales. Each agent is trained on your workflows, integrated into your systems, and delivered as a managed service. Not a chatbot. Not a tool you have to learn. A digital team member that just works.</p>
+    </div>
+    <div class="card-grid card-grid-3" style="margin-top:8px;">
+      <div class="card blue" style="border-left:none; padding-left:16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="dot" style="background:var(--blue); width:12px; height:12px;"></div>
+          <p class="card-title" style="margin:0;">Purpose-Built</p>
+        </div>
+        <p class="card-body">Trained on real estate workflows, not generic AI</p>
+      </div>
+      <div class="card green" style="border-left:none; padding-left:16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="dot" style="background:var(--green); width:12px; height:12px;"></div>
+          <p class="card-title" style="margin:0;">Fully Managed</p>
+        </div>
+        <p class="card-body">We deploy, maintain, and improve each agent</p>
+      </div>
+      <div class="card amber" style="border-left:none; padding-left:16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="dot" style="background:var(--amber); width:12px; height:12px;"></div>
+          <p class="card-title" style="margin:0;">System-Integrated</p>
+        </div>
+        <p class="card-body">Connects to your CRM, project tools, and email</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 04 — ARIA                                        -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="accent-bar" style="background:var(--blue);"></div>
+  <div class="slide-inner" style="gap:20px;">
+    <p class="eyebrow" style="color:var(--blue);">FLAGSHIP PRODUCT</p>
+    <div class="aria-layout">
+      <div>
+        <h1 style="font-size:80px; font-weight:700; color:var(--white); line-height:1; margin-bottom:6px;">ARIA</h1>
+        <p style="font-size:18px; color:var(--blue); margin-bottom:16px; font-weight:400;">AI Warranty &amp; Customer Service Agent</p>
+        <p class="subhead" style="font-size:12px;">ARIA is the first AI agent purpose-built for BC real estate warranty management. She handles the entire 2-5-10 warranty lifecycle — intake, triage, follow-up, documentation, and homeowner communications — automatically.</p>
+      </div>
+      <div style="background:var(--cardgray); border:1px solid var(--border); border-radius:6px; padding:20px 22px;">
+        <p style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:14px;">What ARIA Does</p>
+        <div class="aria-feature">
+          <div class="aria-bar"></div>
+          <div><p class="aria-feature-title">Warranty Claim Intake</p><p class="aria-feature-desc">Captures claims via web, email, or SMS — any time</p></div>
+        </div>
+        <div class="aria-feature">
+          <div class="aria-bar"></div>
+          <div><p class="aria-feature-title">Triage &amp; Prioritization</p><p class="aria-feature-desc">Auto-classifies by claim type, urgency, and coverage period</p></div>
+        </div>
+        <div class="aria-feature">
+          <div class="aria-bar"></div>
+          <div><p class="aria-feature-title">Homeowner Communication</p><p class="aria-feature-desc">24/7 status updates, follow-ups, and resolution notices</p></div>
+        </div>
+        <div class="aria-feature">
+          <div class="aria-bar"></div>
+          <div><p class="aria-feature-title">Contractor Coordination</p><p class="aria-feature-desc">Routes work orders and tracks completion</p></div>
+        </div>
+        <div class="aria-feature">
+          <div class="aria-bar"></div>
+          <div><p class="aria-feature-title">Documentation &amp; Compliance</p><p class="aria-feature-desc">Auto-generates BC warranty-compliant records</p></div>
+        </div>
+        <div class="aria-feature">
+          <div class="aria-bar"></div>
+          <div><p class="aria-feature-title">Escalation Handling</p><p class="aria-feature-desc">Detects disputes and routes to human team instantly</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 05 — AGENT SUITE OVERVIEW                        -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide-inner" style="gap:18px;">
+    <div>
+      <p class="eyebrow" style="color:var(--muted);">PRODUCT</p>
+      <h2 class="headline-md">15 AI Agents. 3 Verticals. One Platform.</h2>
+    </div>
+    <div style="display:flex; gap:14px; flex:1;">
+      <!-- Customer Service -->
+      <div class="vertical-col">
+        <div class="vertical-header" style="background:var(--blue);">Customer Service</div>
+        <div class="vertical-body">
+          <div class="vertical-agent">
+            <div class="dot" style="background:var(--blue);"></div>
+            <span style="font-weight:700;">ARIA — Warranty Agent <span style="font-size:9px;color:var(--blue);border:1px solid var(--blue);padding:1px 5px;border-radius:3px;margin-left:4px;letter-spacing:1px;">FLAGSHIP</span></span>
+          </div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--blue);"></div><span>Homeowner Portal Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--blue);"></div><span>Inquiry Triage Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--blue);"></div><span>Document Request Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--blue);"></div><span>Deficiency Intake Agent</span></div>
+        </div>
+      </div>
+      <!-- Construction -->
+      <div class="vertical-col">
+        <div class="vertical-header" style="background:var(--amber); color:#0A0A0A;">Construction</div>
+        <div class="vertical-body">
+          <div class="vertical-agent"><div class="dot" style="background:var(--amber);"></div><span>Daily Report Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--amber);"></div><span>Deficiency Tracker</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--amber);"></div><span>Supplier Follow-Up Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--amber);"></div><span>Schedule Risk Monitor</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--amber);"></div><span>RFI Management Agent</span></div>
+        </div>
+      </div>
+      <!-- Sales & Marketing -->
+      <div class="vertical-col">
+        <div class="vertical-header" style="background:var(--purple);">Sales &amp; Marketing</div>
+        <div class="vertical-body">
+          <div class="vertical-agent"><div class="dot" style="background:var(--purple);"></div><span>Lead Qualification Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--purple);"></div><span>Listing Content Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--purple);"></div><span>Follow-Up Sequence Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--purple);"></div><span>Appointment Setter Agent</span></div>
+          <div class="vertical-agent"><div class="dot" style="background:var(--purple);"></div><span>Market Intel Agent</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 06 — CUSTOMER SERVICE AGENTS                     -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-bar" style="background:var(--blue);">CUSTOMER SERVICE AGENTS</div>
+  <div class="slide-inner has-bar" style="gap:14px;">
+    <h2 class="headline-md" style="margin-bottom:6px;">From warranty claims to homeowner<br>communications — fully automated.</h2>
+    <div class="card-grid card-grid-2" style="flex:1;">
+      <div class="agent-card blue flagship">
+        <div class="agent-card-title">ARIA — Warranty Agent <span class="flagship-tag">FLAGSHIP</span></div>
+        <p class="agent-card-body">Full 2-5-10 warranty lifecycle management. Intake, triage, contractor dispatch, documentation, and homeowner communication — all automated.</p>
+      </div>
+      <div class="agent-card blue">
+        <div class="agent-card-title">Homeowner Portal Agent</div>
+        <p class="agent-card-body">Answers homeowner questions about their unit, project timeline, and service requests 24/7 via web chat or SMS.</p>
+      </div>
+      <div class="agent-card blue">
+        <div class="agent-card-title">Inquiry Triage Agent</div>
+        <p class="agent-card-body">Classifies and routes inbound customer inquiries to the right team member based on topic, urgency, and department.</p>
+      </div>
+      <div class="agent-card blue">
+        <div class="agent-card-title">Document Request Agent</div>
+        <p class="agent-card-body">Handles requests for manuals, warranty certificates, floor plans, and compliance docs — locates and delivers instantly.</p>
+      </div>
+      <div class="agent-card blue">
+        <div class="agent-card-title">Deficiency Intake Agent</div>
+        <p class="agent-card-body">Guides homeowners through deficiency reporting, captures photos and details, and creates structured work orders automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 07 — CONSTRUCTION AGENTS                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-bar" style="background:var(--amber); color:#0A0A0A;">CONSTRUCTION AGENTS</div>
+  <div class="slide-inner has-bar" style="gap:14px;">
+    <h2 class="headline-md" style="margin-bottom:6px;">Automate the coordination work<br>that slows every job site.</h2>
+    <div class="card-grid card-grid-2" style="flex:1;">
+      <div class="agent-card amber">
+        <div class="agent-card-title">Daily Report Agent</div>
+        <p class="agent-card-body">Compiles site activity, progress photos, weather, and crew logs into structured daily reports — distributed to stakeholders automatically.</p>
+      </div>
+      <div class="agent-card amber">
+        <div class="agent-card-title">Deficiency Tracker</div>
+        <p class="agent-card-body">Centralized deficiency management from capture to sign-off. Auto-assigns trades, tracks resolution, and escalates overdue items.</p>
+      </div>
+      <div class="agent-card amber">
+        <div class="agent-card-title">Supplier Follow-Up Agent</div>
+        <p class="agent-card-body">Monitors outstanding POs, delivery schedules, and material shortfalls. Sends targeted follow-ups and surfaces risks before they hit the schedule.</p>
+      </div>
+      <div class="agent-card amber">
+        <div class="agent-card-title">Schedule Risk Monitor</div>
+        <p class="agent-card-body">Analyzes project schedule data to flag milestone risks, dependencies at risk, and float consumption — before delays become problems.</p>
+      </div>
+      <div class="agent-card amber">
+        <div class="agent-card-title">RFI Management Agent</div>
+        <p class="agent-card-body">Tracks all open RFIs, sends reminders to responsible parties, and escalates unresolved items to keep design and construction aligned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 08 — SALES & MARKETING AGENTS                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-bar" style="background:var(--purple);">SALES &amp; MARKETING AGENTS</div>
+  <div class="slide-inner has-bar" style="gap:14px;">
+    <h2 class="headline-md" style="margin-bottom:6px;">Capture more leads. Convert faster.<br>Close without burning out your team.</h2>
+    <div class="card-grid card-grid-2" style="flex:1;">
+      <div class="agent-card purple">
+        <div class="agent-card-title">Lead Qualification Agent</div>
+        <p class="agent-card-body">Engages inbound leads instantly, asks qualification questions, scores intent, and routes to the right sales rep — day or night.</p>
+      </div>
+      <div class="agent-card purple">
+        <div class="agent-card-title">Listing Content Agent</div>
+        <p class="agent-card-body">Generates MLS descriptions, feature sheets, social captions, and email copy for listings — in minutes, not days.</p>
+      </div>
+      <div class="agent-card purple">
+        <div class="agent-card-title">Follow-Up Sequence Agent</div>
+        <p class="agent-card-body">Deploys personalized follow-up sequences for prospects who showed interest. Adapts message timing and tone based on engagement.</p>
+      </div>
+      <div class="agent-card purple">
+        <div class="agent-card-title">Appointment Setter Agent</div>
+        <p class="agent-card-body">Books showing appointments and discovery calls directly from inbound inquiries, integrating with calendars and CRMs.</p>
+      </div>
+      <div class="agent-card purple">
+        <div class="agent-card-title">Market Intel Agent</div>
+        <p class="agent-card-body">Monitors comparable listings, absorption rates, and market conditions. Delivers weekly briefings to your sales team automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 09 — HOW IT WORKS                               -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide-inner" style="gap:20px;">
+    <div>
+      <p class="eyebrow" style="color:var(--teal);">HOW IT WORKS</p>
+      <h2 class="headline-lg">Deployed in weeks,<br>not months.</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <p class="step-title">Discovery</p>
+        <p class="step-body">We map your current workflows, tools, and team structure. Identify which agents deliver the highest immediate ROI.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <p class="step-title">Configuration</p>
+        <p class="step-body">Agents are trained on your data, integrated with your existing systems (CRM, email, project tools), and tested.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <p class="step-title">Deployment</p>
+        <p class="step-body">Agents go live with your team. We run a monitored launch period to ensure quality and catch any edge cases.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <p class="step-title">Ongoing Optimization</p>
+        <p class="step-body">We monitor agent performance, expand capabilities, and add new agents as your operation grows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 10 — BUSINESS MODEL                             -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide-inner" style="gap:20px;">
+    <div>
+      <p class="eyebrow" style="color:var(--green);">BUSINESS MODEL</p>
+      <h2 class="headline-lg">Recurring revenue.<br>Scalable delivery.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-top-bar" style="background:var(--blue);"></div>
+        <div class="pricing-body">
+          <p class="pricing-tier">Starter</p>
+          <p class="pricing-price" style="color:var(--blue);">$2,500 / mo</p>
+          <p class="pricing-desc">Single agent deployment. Ideal for teams piloting AI with one core use case.</p>
+          <hr class="pricing-divider">
+          <div class="pricing-item"><div class="dot" style="background:var(--blue);"></div><span>1 AI agent</span></div>
+          <div class="pricing-item"><div class="dot" style="background:var(--blue);"></div><span>System integration (1 tool)</span></div>
+          <div class="pricing-item"><div class="dot" style="background:var(--blue);"></div><span>Monthly performance review</span></div>
+        </div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-top-bar" style="background:var(--green);"></div>
+        <div class="pricing-body">
+          <p class="pricing-tier">Growth</p>
+          <p class="pricing-price" style="color:var(--green);">$6,500 / mo</p>
+          <p class="pricing-desc">Multi-agent suite for a full vertical — customer service, construction, or sales.</p>
+          <hr class="pricing-divider">
+          <div class="pricing-item"><div class="dot" style="background:var(--green);"></div><span>Up to 5 AI agents</span></div>
+          <div class="pricing-item"><div class="dot" style="background:var(--green);"></div><span>Full system integration</span></div>
+          <div class="pricing-item"><div class="dot" style="background:var(--green);"></div><span>Bi-weekly optimization calls</span></div>
+        </div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-top-bar" style="background:var(--amber);"></div>
+        <div class="pricing-body">
+          <p class="pricing-tier">Enterprise</p>
+          <p class="pricing-price" style="color:var(--amber);">Custom</p>
+          <p class="pricing-desc">Full suite across all verticals. Custom workflows, white-label options, and dedicated support.</p>
+          <hr class="pricing-divider">
+          <div class="pricing-item"><div class="dot" style="background:var(--amber);"></div><span>All 15+ agents</span></div>
+          <div class="pricing-item"><div class="dot" style="background:var(--amber);"></div><span>Dedicated implementation team</span></div>
+          <div class="pricing-item"><div class="dot" style="background:var(--amber);"></div><span>White-label available</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 11 — WHY CHASSIS LABS                           -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide-inner" style="gap:20px;">
+    <div>
+      <p class="eyebrow" style="color:var(--blue);">WHY CHASSIS LABS</p>
+      <h2 class="headline-lg">Generic AI is not enough.<br>Vertical depth wins.</h2>
+    </div>
+    <div class="compare-grid" style="flex:1;">
+      <div class="compare-card us">
+        <p class="compare-title" style="color:var(--white);">Chassis Labs</p>
+        <div class="compare-item"><div class="dot" style="background:var(--blue);"></div><span style="color:var(--offwhite);">Built for BC real estate — knows warranty law, construction workflows, and RE sales cycles</span></div>
+        <div class="compare-item"><div class="dot" style="background:var(--blue);"></div><span style="color:var(--offwhite);">Deployed as a managed service — we own the outcome, not just the tool</span></div>
+        <div class="compare-item"><div class="dot" style="background:var(--blue);"></div><span style="color:var(--offwhite);">Deep integrations — connects to your actual stack (CRM, PM tools, email)</span></div>
+        <div class="compare-item"><div class="dot" style="background:var(--blue);"></div><span style="color:var(--offwhite);">Continuous improvement — agents get better over time with your data</span></div>
+        <div class="compare-item"><div class="dot" style="background:var(--blue);"></div><span style="color:var(--offwhite);">Multi-agent platform — one partner scales across every department</span></div>
+      </div>
+      <div class="compare-card them">
+        <p class="compare-title" style="color:var(--muted);">Generic AI Platforms</p>
+        <div class="compare-item"><div class="dot" style="background:var(--dimmed);"></div><span style="color:var(--dimmed);">Horizontal tools that require heavy customization for RE use cases</span></div>
+        <div class="compare-item"><div class="dot" style="background:var(--dimmed);"></div><span style="color:var(--dimmed);">Software you buy and figure out yourself</span></div>
+        <div class="compare-item"><div class="dot" style="background:var(--dimmed);"></div><span style="color:var(--dimmed);">Limited integrations — often just chat widgets</span></div>
+        <div class="compare-item"><div class="dot" style="background:var(--dimmed);"></div><span style="color:var(--dimmed);">Static capabilities — you get what you launch with</span></div>
+        <div class="compare-item"><div class="dot" style="background:var(--dimmed);"></div><span style="color:var(--dimmed);">Single use case — need multiple vendors for full coverage</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 12 — ROADMAP                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide-inner" style="gap:20px;">
+    <div>
+      <p class="eyebrow" style="color:var(--amber);">ROADMAP</p>
+      <h2 class="headline-lg">Where we are.<br>Where we're going.</h2>
+    </div>
+    <div class="timeline-track">
+      <!-- Now -->
+      <div class="timeline-item">
+        <div class="tl-dot-row">
+          <div class="tl-dot filled" style="background:var(--blue); border-color:var(--blue);"></div>
+          <div class="tl-line"></div>
+        </div>
+        <p class="tl-phase" style="color:var(--blue);">NOW</p>
+        <div class="tl-card"><div class="tl-card-top" style="background:var(--blue);"></div><div class="tl-card-body"><p class="tl-card-title">ARIA Launch</p><p class="tl-card-desc">Flagship warranty agent available. First customer deployments underway in Metro Vancouver.</p></div></div>
+      </div>
+      <!-- Q3 2026 -->
+      <div class="timeline-item">
+        <div class="tl-dot-row">
+          <div class="tl-dot" style="background:transparent; border-color:var(--amber);"></div>
+          <div class="tl-line"></div>
+        </div>
+        <p class="tl-phase" style="color:var(--amber);">Q3 2026</p>
+        <div class="tl-card"><div class="tl-card-top" style="background:var(--amber);"></div><div class="tl-card-body"><p class="tl-card-title">Construction Suite</p><p class="tl-card-desc">Full 5-agent construction vertical. Daily Report Agent ships first — fastest time-to-value.</p></div></div>
+      </div>
+      <!-- Q4 2026 -->
+      <div class="timeline-item">
+        <div class="tl-dot-row">
+          <div class="tl-dot" style="background:transparent; border-color:var(--purple);"></div>
+          <div class="tl-line"></div>
+        </div>
+        <p class="tl-phase" style="color:var(--purple);">Q4 2026</p>
+        <div class="tl-card"><div class="tl-card-top" style="background:var(--purple);"></div><div class="tl-card-body"><p class="tl-card-title">Sales Suite</p><p class="tl-card-desc">Lead qualification and listing content agents launch for brokerages and developer sales teams.</p></div></div>
+      </div>
+      <!-- 2027 -->
+      <div class="timeline-item">
+        <div class="tl-dot-row">
+          <div class="tl-dot" style="background:transparent; border-color:var(--green);"></div>
+        </div>
+        <p class="tl-phase" style="color:var(--green);">2027</p>
+        <div class="tl-card"><div class="tl-card-top" style="background:var(--green);"></div><div class="tl-card-body"><p class="tl-card-title">Platform Expansion</p><p class="tl-card-desc">White-label offering. Alberta and Ontario market entry. API platform for channel partners.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 13 — THE ASK                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="accent-bar" style="background:var(--blue);"></div>
+  <div class="slide-inner" style="gap:20px;">
+    <div>
+      <p class="eyebrow" style="color:var(--blue);">THE OPPORTUNITY</p>
+      <h2 class="headline-lg">Join us in building the<br>AI backbone of real estate.</h2>
+      <p class="subhead">We are raising a seed round to accelerate ARIA deployments, build the full construction agent suite, and expand our sales and marketing vertical. Capital will fund engineering, sales, and customer success.</p>
+    </div>
+    <div class="funds-grid">
+      <div class="fund-card">
+        <p class="fund-pct" style="color:var(--blue);">45%</p>
+        <p class="fund-label">Product &amp; Engineering</p>
+        <p class="fund-desc">Expand agent capabilities, build platform integrations, and launch construction vertical</p>
+      </div>
+      <div class="fund-card">
+        <p class="fund-pct" style="color:var(--green);">30%</p>
+        <p class="fund-label">Sales &amp; Customer Success</p>
+        <p class="fund-desc">Grow the customer base in Metro Vancouver and expand to Alberta</p>
+      </div>
+      <div class="fund-card">
+        <p class="fund-pct" style="color:var(--amber);">25%</p>
+        <p class="fund-label">Operations &amp; Compliance</p>
+        <p class="fund-desc">Legal, security, warranty compliance frameworks, and insurance partnerships</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SLIDE 14 — CLOSING                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section>
+  <div class="accent-bar" style="background:var(--blue);"></div>
+  <div class="closing-circles">
+    <div class="closing-circle" style="width:420px;height:420px;right:-80px;top:-60px;border-color:rgba(59,130,246,0.15);background:rgba(59,130,246,0.04);"></div>
+    <div class="closing-circle" style="width:260px;height:260px;right:80px;top:200px;border-color:rgba(139,92,246,0.15);background:rgba(139,92,246,0.04);"></div>
+    <div class="closing-circle" style="width:160px;height:160px;right:20px;top:360px;border-color:rgba(245,158,11,0.18);background:rgba(245,158,11,0.05);"></div>
+  </div>
+  <div class="slide-inner" style="justify-content:center;">
+    <p class="eyebrow" style="color:var(--muted); margin-bottom:20px;">CHASSIS LABS</p>
+    <h1 class="headline-xl" style="font-size:60px; margin-bottom:36px;">Let's build<br>something together.</h1>
+    <hr style="border:none; border-top:2px solid var(--blue); width:100px; margin:0 0 28px;">
+    <p style="font-size:10px; font-weight:700; color:var(--muted); letter-spacing:3px; margin-bottom:4px;">WEBSITE</p>
+    <p style="font-size:18px; color:var(--white); margin-bottom:18px;">chassislabs.com</p>
+    <p style="font-size:10px; font-weight:700; color:var(--muted); letter-spacing:3px; margin-bottom:4px;">EMAIL</p>
+    <p style="font-size:18px; color:var(--white);">info@chassislabs.ai</p>
+  </div>
+</section>
+
+</div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    controls: true,
+    progress: true,
+    center: false,
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    backgroundTransition: 'none',
+    width: 1280,
+    height: 720,
+    margin: 0,
+    minScale: 0.2,
+    maxScale: 2.0,
+    keyboard: true,
+    touch: true,
+  });
+</script>
+</body>
+</html>
