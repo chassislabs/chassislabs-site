@@ -28,7 +28,7 @@ export async function onRequest(context) {
   const triggerData = await triggerResp.json();
   const jobId = triggerData.job_id || triggerData.job_info?.job_id;
   const convId = triggerData.conversation_id || conversation_id || crypto.randomUUID();
-  if (!jobId) return sseError(`No job_id. Keys=${JSON.stringify(Object.keys(triggerData))} Data=${JSON.stringify(triggerData).slice(0,400)}`);
+  if (!jobId) return sseError(`No job_id: ${JSON.stringify(triggerData).slice(0,300)}`);
 
   const { readable, writable } = new TransformStream();
   const writer = writable.getWriter();
@@ -39,7 +39,6 @@ export async function onRequest(context) {
     const maxAttempts = 60;
     let attempts = 0;
     let lastOutput = '';
-    let debugSent = false;
 
     while (attempts < maxAttempts) {
       attempts++;
@@ -52,7 +51,7 @@ export async function onRequest(context) {
           { headers: { Authorization: apiKey } }
         );
       } catch (e) {
-        await writeSSE({ type: 'error', message: 'Poll fetch failed: ' + e.message });
+        await writeSSE({ type: 'error', message: 'Poll failed: ' + e.message });
         break;
       }
 
@@ -67,12 +66,8 @@ export async function onRequest(context) {
       const data = await pollResp.json();
       const status = data.status || data.type;
 
-      // Send raw poll structure once for debugging
-      if (!debugSent) {
-        debugSent = true;
-        await writeSSE({ type: 'chunk', text: `[DBG] status=${status} keys=${JSON.stringify(Object.keys(data))} ${JSON.stringify(data).slice(0,600)}` });
-      }
-
+      // Extract answer from Relevance AI response structure:
+      // data.updates[n].output.output.answer
       const output = extractOutput(data);
       if (output && output !== lastOutput) {
         const chunk = output.slice(lastOutput.length);
@@ -81,6 +76,11 @@ export async function onRequest(context) {
       }
 
       if (status === 'complete' || status === 'completed' || status === 'done') {
+        // Final pass to make sure we got the answer
+        const finalOutput = extractOutput(data);
+        if (finalOutput && finalOutput !== lastOutput) {
+          await writeSSE({ type: 'chunk', text: finalOutput.slice(lastOutput.length) });
+        }
         await writeSSE({ type: 'done', conversation_id: convId });
         break;
       }
@@ -97,16 +97,19 @@ export async function onRequest(context) {
 }
 
 function extractOutput(data) {
+  // Primary path confirmed from API: updates[n].output.output.answer
+  if (data.updates) {
+    for (const u of data.updates) {
+      if (u.output?.output?.answer) return u.output.output.answer;
+      if (u.output?.output?.response) return u.output.output.response;
+      if (u.output?.output?.message) return u.output.output.message;
+    }
+  }
+  // Fallback paths
   if (data.output?.answer) return data.output.answer;
   if (data.output?.response) return data.output.response;
   if (data.output?.message) return data.output.message;
   if (typeof data.output === 'string') return data.output;
-  if (data.updates) {
-    for (let i = data.updates.length - 1; i >= 0; i--) {
-      const u = data.updates[i];
-      if (u.type === 'agent-message' || u.type === 'message') return u.message?.content || u.content || '';
-    }
-  }
   return '';
 }
 
