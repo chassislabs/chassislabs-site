@@ -14,38 +14,17 @@ export async function onRequest(context) {
 
   let html = await upstream.text();
 
-  // Inject base tag so all relative asset URLs resolve to app.relevanceai.com
-  // Also inject a script that spoofs window.location so Nuxt router resolves correctly
+  const targetUrl = `${upstreamOrigin}/agents/${agentPath}/embed-chat?${params}`;
+
   const inject = `<base href="${upstreamOrigin}/">
 <script>
   (function() {
-    var target = '${upstreamOrigin}/agents/${agentPath}/embed-chat?${params}';
     try {
-      Object.defineProperty(window, 'location', {
-        configurable: true,
-        get: function() {
-          var url = new URL(target);
-          return {
-            href: url.href,
-            origin: url.origin,
-            protocol: url.protocol,
-            host: url.host,
-            hostname: url.hostname,
-            port: url.port,
-            pathname: url.pathname,
-            search: url.search,
-            hash: url.hash,
-            assign: function(u) { window.top.location.href = u; },
-            replace: function(u) { window.top.location.href = u; },
-            reload: function() {}
-          };
-        }
-      });
+      history.replaceState(history.state, '', '${targetUrl}');
     } catch(e) {}
   })();
 <\/script>`;
 
-  // Insert right after <head>
   html = html.replace('<head>', '<head>\n' + inject);
 
   const headers = new Headers();
