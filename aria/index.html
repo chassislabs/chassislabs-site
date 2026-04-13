@@ -3,29 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARIA — Warranty Support | Chassis Labs</title>
+  <title>ARIA – Warranty Support | Chassis Labs</title>
   <meta name="description" content="ARIA is your AI warranty support assistant. Get instant answers about your BC Housing 2-5-10 warranty coverage.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; min-height: 100vh; display: flex; flex-direction: column; }
-    .nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #1f2028; }
+    body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 40px; border-bottom: 1px solid #1f2028; flex-shrink: 0; }
     .logo { font-weight: 600; letter-spacing: -0.5px; text-decoration: none; color: #fff; }
-    .nav-links a { color: #aaa; text-decoration: none; margin-left: 25px; font-size: 14px; }
-    .nav-links a:hover { color: #fff; }
     .nav-badge { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #60a5fa; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); padding: 3px 10px; border-radius: 20px; }
-    .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 20px; }
-    .eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin-bottom: 16px; }
-    h1 { font-size: 52px; font-weight: 500; letter-spacing: -1px; margin-bottom: 16px; }
-    .subtitle { color: #9ca3af; font-size: 18px; max-width: 500px; margin: 0 auto 48px; line-height: 1.6; }
-    .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #685FFF; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; font-family: 'Inter', sans-serif; transition: background 0.2s; }
-    .cta-btn:hover { background: #5a52e8; }
-    .cta-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-    .features { display: flex; gap: 24px; margin-top: 64px; flex-wrap: wrap; justify-content: center; }
-    .feature { background: #13141a; border: 1px solid #1f2028; border-radius: 12px; padding: 20px 24px; min-width: 160px; text-align: left; }
-    .feature-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-bottom: 8px; }
-    .feature-value { font-size: 14px; color: #e5e7eb; }
-    @media (max-width: 600px) { .nav { padding: 16px 20px; } h1 { font-size: 36px; } .features { gap: 12px; } }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { color: #aaa; text-decoration: none; font-size: 14px; }
+    .nav-links a:hover { color: #fff; }
+    .chat-container { flex: 1; overflow: hidden; }
+    .chat-container iframe { width: 100%; height: 100%; border: none; display: block; }
   </style>
 </head>
 <body>
@@ -39,19 +30,8 @@
       </div>
     </div>
   </nav>
-  <div class="hero">
-    <div class="eyebrow">AI Warranty Assistant</div>
-    <h1>Ask ARIA</h1>
-    <p class="subtitle">Instant answers about your BC Housing 2-5-10 warranty coverage — available 24/7.</p>
-    <a class="cta-btn" href="https://app.relevanceai.com/agents/bcbe5a/afcb6d6a-9301-49a7-89fe-b2c89ca18179/4849a6c2-bbd3-4dfc-abe7-d11bcd31fccf" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-      Chat with ARIA
-    </a>
-    <div class="features">
-      <div class="feature"><div class="feature-label">Coverage</div><div class="feature-value">2-5-10 Year Warranty</div></div>
-      <div class="feature"><div class="feature-label">Claims</div><div class="feature-value">info@chassislabs.ai</div></div>
-      <div class="feature"><div class="feature-label">Available</div><div class="feature-value">24 / 7</div></div>
-    </div>
+  <div class="chat-container">
+    <iframe src="/aria-embed" title="ARIA Warranty Assistant" allow="microphone"></iframe>
   </div>
 </body>
 </html>
