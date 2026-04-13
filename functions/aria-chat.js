@@ -62,11 +62,12 @@ export async function onRequest(context) {
   }
 
   const triggerData = await triggerResp.json();
-  const jobId = triggerData.job_id;
+  // Relevance AI trigger response: { job_info: { job_id }, conversation_id } or { job_id, conversation_id }
+  const jobId = triggerData.job_id || triggerData.job_info?.job_id;
   const convId = triggerData.conversation_id || conversation_id || crypto.randomUUID();
 
   if (!jobId) {
-    return sseError('No job_id returned from agent trigger');
+    return sseError(`Debug: ${JSON.stringify(triggerData).slice(0, 400)}`);
   }
 
   // Step 2: Poll for the result and stream it back as SSE
