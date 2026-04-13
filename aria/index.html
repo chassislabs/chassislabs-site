@@ -18,11 +18,11 @@
     .eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin-bottom: 16px; }
     h1 { font-size: 52px; font-weight: 500; letter-spacing: -1px; margin-bottom: 16px; }
     .subtitle { color: #9ca3af; font-size: 18px; max-width: 500px; margin: 0 auto 48px; line-height: 1.6; }
-    .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #685FFF; color: #fff; border: none; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #685FFF; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; font-family: 'Inter', sans-serif; transition: background 0.2s; }
     .cta-btn:hover { background: #5a52e8; }
-    .cta-btn svg { width: 18px; height: 18px; }
+    .cta-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
     .features { display: flex; gap: 24px; margin-top: 64px; flex-wrap: wrap; justify-content: center; }
-    .feature { background: #13141a; border: 1px solid #1f2028; border-radius: 12px; padding: 20px 24px; max-width: 200px; text-align: left; }
+    .feature { background: #13141a; border: 1px solid #1f2028; border-radius: 12px; padding: 20px 24px; min-width: 160px; text-align: left; }
     .feature-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-bottom: 8px; }
     .feature-value { font-size: 14px; color: #e5e7eb; }
     @media (max-width: 600px) { .nav { padding: 16px 20px; } h1 { font-size: 36px; } .features { gap: 12px; } }
@@ -43,27 +43,15 @@
     <div class="eyebrow">AI Warranty Assistant</div>
     <h1>Ask ARIA</h1>
     <p class="subtitle">Instant answers about your BC Housing 2-5-10 warranty coverage — available 24/7.</p>
-    <button class="cta-btn" onclick="openAria()">
+    <a class="cta-btn" href="https://app.relevanceai.com/agents/bcbe5a/afcb6d6a-9301-49a7-89fe-b2c89ca18179/4849a6c2-bbd3-4dfc-abe7-d11bcd31fccf" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
       Chat with ARIA
-    </button>
+    </a>
     <div class="features">
       <div class="feature"><div class="feature-label">Coverage</div><div class="feature-value">2-5-10 Year Warranty</div></div>
       <div class="feature"><div class="feature-label">Claims</div><div class="feature-value">info@chassislabs.ai</div></div>
       <div class="feature"><div class="feature-label">Available</div><div class="feature-value">24 / 7</div></div>
     </div>
   </div>
-  <script defer data-relevanceai-share-id="bcbe5a/afcb6d6a-9301-49a7-89fe-b2c89ca18179/4849a6c2-bbd3-4dfc-abe7-d11bcd31fccf" src="https://app.relevanceai.com/embed/chat-bubble.js" data-share-styles="hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%23685FFF&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false" ></script>
-  <script>
-    function openAria() {
-      const btn = document.querySelector('[data-relevanceai-share-id]');
-      if (btn) btn.click();
-      // Fallback: find the bubble button and click it
-      setTimeout(() => {
-        const bubble = document.querySelector('.relevanceai-chat-bubble, [class*="bubble"], [class*="chat-btn"]');
-        if (bubble) bubble.click();
-      }, 500);
-    }
-  </script>
 </body>
 </html>
