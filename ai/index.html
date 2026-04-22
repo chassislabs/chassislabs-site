@@ -28,8 +28,8 @@ body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; line-
 /* SYSTEMS WE DEPLOY */
 .section-light { background: #f5f5f5; color: #111; }
 .section-light .container { padding: 100px 20px; }
-.section-light h2 { font-size: 38px; font-weight: 600; color: #0e0f12; letter-spacing: -0.5px; }
-.systems-subtitle { font-size: 16px; color: #666; max-width: 620px; margin: 16px 0 0; line-height: 1.7; }
+.section-light h2 { font-size: 38px; font-weight: 600; color: #0e0f12; letter-spacing: -0.5px; text-align: center; }
+.systems-subtitle { font-size: 16px; color: #666; max-width: 620px; margin: 16px auto 0; line-height: 1.7; text-align: center; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
 .card { background: white; padding: 36px; border-radius: 16px; border: 1px solid #e5e5e5; transition: all 0.25s ease; display: flex; flex-direction: column; position: relative; overflow: hidden; }
 .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; opacity: 0; transition: opacity 0.25s ease; }
@@ -39,8 +39,8 @@ body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; line-
 .card:nth-child(4)::before { background: #10b981; }
 .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); border-color: #d0d0d0; }
 .card:hover::before { opacity: 1; }
-.card h3 { font-size: 18px; font-weight: 600; color: #0e0f12; margin-bottom: 6px; text-align: center; }
-.card-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; color: #999; margin-bottom: 14px; text-align: center; }
+.card h3 { font-size: 18px; font-weight: 600; color: #0e0f12; margin-bottom: 6px; }
+.card-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; color: #999; margin-bottom: 14px; }
 .card p.card-desc { font-size: 14.5px; color: #555; line-height: 1.7; margin-bottom: 22px; flex-grow: 1; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .card-tag { display: inline-block; padding: 5px 12px; background: #f4f4f5; border: 1px solid #e5e5e5; border-radius: 20px; font-size: 11.5px; color: #666; font-weight: 500; }
@@ -54,7 +54,6 @@ body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; line-
 .verticals { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
 .vertical { background: #13141a; border: 1px solid #1f2028; border-radius: 20px; overflow: hidden; }
 .vertical-header { padding: 28px 28px 20px; border-bottom: 1px solid #1f2028; }
-.vertical-header .v-icon { font-size: 22px; margin-bottom: 10px; }
 .vertical-header h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 4px; }
 .vertical-header p { font-size: 12px; color: #6b7280; }
 .vertical.cs { border-top: 2px solid #3b82f6; }
@@ -94,7 +93,8 @@ body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; line-
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: #4b5563; }
 .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: #3b82f6; }
 .contact-form textarea { resize: vertical; min-height: 120px; }
-.contact-form select option { background: #13141a; color: #e2e8f0; }
+.contact-form select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 16px; padding-right: 44px; cursor: pointer; }
+    .contact-form select option { background: #13141a; color: #e2e8f0; }
 .contact-form .submit-btn { display: inline-block; padding: 14px 28px; border-radius: 999px; background: #fff; color: #000; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; border: none; cursor: pointer; transition: all 0.2s ease; align-self: flex-start; }
 .contact-form .submit-btn:hover { transform: translateY(-2px); }
 .form-note { font-size: 12px; color: #4b5563; margin-top: 4px; }
@@ -192,8 +192,7 @@ body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; line-
     <!-- CUSTOMER SERVICE -->
     <div class="vertical cs">
       <div class="vertical-header">
-        <div class="v-icon">🎧</div>
-        <h3>Customer Service</h3>
+                <h3>Customer Service</h3>
         <p>Warranty, support &amp; retention</p>
       </div>
       <div class="agent-list">
@@ -230,8 +229,7 @@ body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; line-
     <!-- CONSTRUCTION -->
     <div class="vertical con">
       <div class="vertical-header">
-        <div class="v-icon">🏗️</div>
-        <h3>Construction</h3>
+                <h3>Construction</h3>
         <p>Project ops, safety &amp; compliance</p>
       </div>
       <div class="agent-list">
@@ -265,8 +263,7 @@ body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; line-
     <!-- SALES & MARKETING -->
     <div class="vertical sm">
       <div class="vertical-header">
-        <div class="v-icon">📈</div>
-        <h3>Sales &amp; Marketing</h3>
+                <h3>Sales &amp; Marketing</h3>
         <p>Pipeline, outreach &amp; growth</p>
       </div>
       <div class="agent-list">
@@ -298,19 +295,6 @@ body { font-family: 'Inter', sans-serif; background: #0e0f12; color: #fff; line-
       </div>
     </div>
   </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section-dark container">
-  <h2>Simple. Scalable. Systemized.</h2>
-  <p>We audit your current funnel, design your AI infrastructure, and deploy systems built to operate without manual input.</p>
-</section>
-
-<!-- CTA -->
-<section class="section-dark container">
-  <h2>Deploy Your AI System</h2>
-  <p>Built for teams that want leverage — not more manual work.</p>
-  <a href="#contact" class="btn">I'm in! What's next?</a>
 </section>
 
 <!-- CONTACT -->
