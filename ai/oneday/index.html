@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zero-Deficiency One-Day Building Turnover — Chassis Labs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>One-Day Building Turnover — Chassis Labs</title>
+<meta name="description" content="A structured consulting program that turns a month-long rolling handover into a single coordinated day. Built for BC and Ontario residential developers by a team that has closed out 15,000+ homes.">
+<link rel="canonical" href="https://chassislabs.com/ai/oneday/">
+<meta property="og:title" content="One-Day Building Turnover — Chassis Labs">
+<meta property="og:description" content="Hit the occupancy date. Register faster. Close more units. A turnover program for BC and Ontario developers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chassislabs.com/ai/oneday/">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -23,6 +29,7 @@
     --border:     rgba(255,255,255,0.08);
     --border-light: #E5E5E5;
     --card-dark:  #1F2028;
+    --pad:        clamp(20px, 5.2vw, 60px);
   }
 
   html, body {
@@ -31,16 +38,22 @@
     color: var(--white);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
   }
+  img { max-width: 100%; height: auto; display: block; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
   /* ── NAV ── */
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 60px;
+    gap: 12px 24px;
+    flex-wrap: wrap;
+    padding: 20px var(--pad);
     border-bottom: 1px solid var(--border);
   }
+  nav a { display: inline-flex; align-items: center; min-height: 44px; }
   .nav-brand {
     font-size: 15px;
     font-weight: 500;
@@ -51,11 +64,69 @@
     font-size: 13px;
     color: var(--text-muted);
     letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
+  .nav-meta a { min-height: 44px; padding-right: 2px; }
+
+  /* ── JURISDICTION SWITCH ── */
+  .jbar {
+    display: flex;
+    align-items: center;
+    gap: 12px 20px;
+    flex-wrap: wrap;
+    padding: 14px var(--pad);
+    background: var(--dark-2);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .jbar-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    flex: 0 0 auto;
+  }
+  .seg {
+    display: flex;
+    gap: 4px;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    flex: 1 1 260px;
+    max-width: 360px;
+  }
+  .seg button {
+    flex: 1;
+    min-height: 44px;
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease;
+  }
+  .seg button[aria-pressed="true"] { background: var(--white); color: var(--dark); }
+  .jbar-note {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-dim);
+    flex: 1 1 100%;
+  }
+  @media (min-width: 960px) { .jbar-note { flex: 1 1 auto; text-align: right; } }
 
   /* ── HERO ── */
   .hero {
-    padding: 100px 60px 80px;
+    padding: clamp(56px, 9vw, 100px) var(--pad) clamp(48px, 7vw, 80px);
     max-width: 900px;
   }
   .hero-eyebrow {
@@ -67,27 +138,28 @@
     margin-bottom: 28px;
   }
   .hero h1 {
-    font-size: 58px;
+    font-size: clamp(36px, 8.4vw, 58px);
     font-weight: 500;
     letter-spacing: -2px;
     line-height: 1.05;
     color: var(--white);
     margin-bottom: 24px;
   }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--text-muted);
-  }
+  .hero h1 em { font-style: normal; color: var(--text-muted); }
   .hero-sub {
-    font-size: 18px;
+    font-size: clamp(16px, 2.2vw, 18px);
     font-weight: 300;
     color: var(--text-muted);
     line-height: 1.65;
     max-width: 580px;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   .pill-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
     background: var(--white);
     color: var(--dark);
     font-size: 14px;
@@ -97,28 +169,38 @@
     text-decoration: none;
     letter-spacing: -0.2px;
   }
+  .pill-btn.ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.22);
+  }
+  .pill-btn.ghost:hover { border-color: rgba(255,255,255,0.5); }
+
+  .hero-cred {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 24px 32px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .hero-cred .n {
+    font-size: clamp(24px, 4vw, 30px);
+    font-weight: 300;
+    letter-spacing: -1.2px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .hero-cred .l { font-size: 12px; color: var(--text-dim); font-weight: 400; line-height: 1.45; }
 
   /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 0 60px;
-  }
+  .divider { height: 1px; background: var(--border); margin: 0 var(--pad); }
 
-  /* ── WHAT THIS IS ── */
-  .section-light {
-    background: var(--light-bg);
-    color: var(--dark);
-    padding: 80px 60px;
-  }
-  .section-dark {
-    background: var(--dark);
-    padding: 80px 60px;
-  }
-  .section-dark-2 {
-    background: var(--dark-2);
-    padding: 80px 60px;
-  }
+  /* ── SECTIONS ── */
+  .section-light { background: var(--light-bg); color: var(--dark); padding: clamp(52px, 7vw, 80px) var(--pad); }
+  .section-dark { background: var(--dark); padding: clamp(52px, 7vw, 80px) var(--pad); }
+  .section-dark-2 { background: var(--dark-2); padding: clamp(52px, 7vw, 80px) var(--pad); }
 
   .eyebrow {
     font-size: 11px;
@@ -128,190 +210,38 @@
     color: var(--text-dim);
     margin-bottom: 20px;
   }
-  .eyebrow-on-dark {
-    color: var(--text-muted);
-  }
+  .eyebrow-on-dark { color: var(--text-muted); }
 
   .section-title {
-    font-size: 38px;
+    font-size: clamp(27px, 5.2vw, 38px);
     font-weight: 600;
     letter-spacing: -1.5px;
     line-height: 1.1;
     margin-bottom: 16px;
     color: var(--dark);
+    text-wrap: balance;
   }
-  .section-title-dark {
-    color: var(--white);
-  }
+  .section-title-dark { color: var(--white); }
   .section-body {
-    font-size: 17px;
+    font-size: clamp(15px, 2vw, 17px);
     font-weight: 300;
     color: #555;
     line-height: 1.7;
     max-width: 620px;
   }
-  .section-body-dark {
-    color: var(--text-muted);
-  }
+  .section-body-dark { color: var(--text-muted); }
+  .section-body + .section-body { margin-top: 14px; }
 
-  /* ── PHASE CARDS ── */
-  .phases-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 48px;
-  }
-  .phase-card {
-    background: var(--white);
-    border: 1px solid var(--border-light);
-    border-radius: 16px;
-    padding: 32px;
-  }
-  .phase-num {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-  .phase-title {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--dark);
-    margin-bottom: 8px;
-    letter-spacing: -0.3px;
-  }
-  .phase-timing {
+  .accent-line { width: 40px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+
+  .footnote {
     font-size: 12px;
-    color: var(--text-dim);
-    margin-bottom: 16px;
-    font-weight: 400;
-  }
-  .phase-body {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
     font-weight: 300;
-  }
-  .phase-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    max-width: 680px;
     margin-top: 20px;
   }
-  .tag {
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--text-dim);
-    background: var(--light-bg);
-    border: 1px solid var(--border-light);
-    border-radius: 999px;
-    padding: 4px 12px;
-  }
-
-  /* ── SAVINGS STRIP ── */
-  .savings-strip {
-    background: var(--dark-3);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 64px 60px;
-  }
-  .savings-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-top: 48px;
-  }
-  .savings-cell {
-    background: var(--dark-3);
-    padding: 40px 36px;
-    text-align: center;
-  }
-  .savings-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-  }
-  .savings-amount {
-    font-size: 42px;
-    font-weight: 300;
-    letter-spacing: -2px;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .savings-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 300;
-  }
-
-  /* ── TWO COL ── */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-    margin-top: 48px;
-  }
-
-  /* ── WHAT WE BRING (dark cards) ── */
-  .dark-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 48px;
-  }
-  .dark-card {
-    background: var(--dark-3);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 28px;
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .dark-card-num {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    padding-top: 3px;
-    min-width: 24px;
-  }
-  .dark-card-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--white);
-    margin-bottom: 4px;
-    letter-spacing: -0.2px;
-  }
-  .dark-card-body {
-    font-size: 14px;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.55;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-brand { font-size: 14px; font-weight: 500; color: var(--white); }
-  .footer-contact { font-size: 13px; color: var(--text-muted); }
-  .footer-contact a { color: var(--accent); text-decoration: none; }
 
   /* ── METRIC ROW ── */
   .metric-row {
@@ -324,31 +254,238 @@
     overflow: hidden;
     margin-top: 48px;
   }
-  .metric-cell {
-    background: var(--white);
-    padding: 32px 28px;
-    text-align: center;
-  }
+  .metric-cell { background: var(--white); padding: 32px 24px; text-align: center; }
   .metric-num {
-    font-size: 36px;
+    font-size: clamp(26px, 4.6vw, 36px);
     font-weight: 300;
-    letter-spacing: -2px;
+    letter-spacing: -1.6px;
     color: var(--dark);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    line-height: 1.05;
   }
-  .metric-label {
+  .metric-num.sig { color: var(--accent); }
+  .metric-label { font-size: 12px; color: var(--text-dim); font-weight: 400; line-height: 1.45; }
+  @media (max-width: 880px) { .metric-row { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .metric-row { grid-template-columns: 1fr; } }
+
+  /* ── CALLOUT ── */
+  .callout {
+    margin-top: 32px;
+    padding: 24px 28px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(59,130,246,0.22);
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: #333;
+    max-width: 760px;
+  }
+  .callout strong { font-weight: 600; color: var(--dark); }
+  .callout-dark { color: var(--text-muted); }
+  .callout-dark strong { color: var(--white); }
+
+  /* ── PHASE CARDS ── */
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  @media (max-width: 1040px) { .phases-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 680px)  { .phases-grid { grid-template-columns: 1fr; } }
+  .phase-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: clamp(24px, 3.2vw, 32px);
+  }
+  .phase-num {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .phase-title { font-size: 17px; font-weight: 600; color: var(--dark); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .phase-timing { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; font-weight: 400; }
+  .phase-body { font-size: 14px; color: #555; line-height: 1.6; font-weight: 300; }
+  .phase-body + .phase-body { margin-top: 12px; }
+  .phase-body strong { font-weight: 600; color: var(--dark); }
+  .phase-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .tag {
     font-size: 12px;
-    color: var(--text-dim);
     font-weight: 400;
+    color: var(--text-dim);
+    background: var(--light-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+  .phase-card.is-dark { background: var(--dark); border-color: var(--border); }
+  .phase-card.is-dark .phase-num { color: var(--text-muted); }
+  .phase-card.is-dark .phase-title { color: var(--white); }
+  .phase-card.is-dark .phase-timing { color: var(--text-muted); }
+  .phase-card.is-dark .phase-body { color: var(--text-muted); }
+  .phase-card.is-dark .phase-body strong { color: var(--white); }
+  .phase-card.is-dark .tag { background: var(--dark-3); border-color: var(--border); color: var(--text-muted); }
+
+  /* ── SAVINGS / OUTPUT STRIP ── */
+  .savings-strip {
+    background: var(--dark-3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: clamp(48px, 6vw, 64px) var(--pad);
+  }
+  .savings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  @media (max-width: 560px) { .savings-grid { grid-template-columns: 1fr; } }
+  .savings-cell { background: var(--dark-3); padding: clamp(26px, 3.4vw, 36px) clamp(22px, 3vw, 32px); }
+  .savings-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .savings-amount {
+    font-size: clamp(28px, 5.4vw, 40px);
+    font-weight: 300;
+    letter-spacing: -1.8px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .savings-desc { font-size: 13px; color: var(--text-muted); font-weight: 300; line-height: 1.55; }
+
+  /* ── CALCULATOR ── */
+  .calc-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    margin-top: 48px;
+  }
+  @media (max-width: 900px) { .calc-wrap { grid-template-columns: 1fr; } }
+  .calc-inputs {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(22px, 3vw, 28px);
+  }
+  .field + .field { margin-top: 18px; }
+  .field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
     line-height: 1.4;
   }
-
-  .accent-line {
-    width: 40px;
-    height: 2px;
-    background: var(--accent);
-    margin-bottom: 24px;
+  .field input {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: var(--white);
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
   }
+  .field input:focus { border-color: var(--accent); outline: none; }
+
+  /* ── RUNGS ── */
+  .dark-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
+  .dark-card {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  @media (max-width: 520px) { .dark-card { padding: 22px; gap: 14px; } }
+  .dark-card-num { font-size: 11px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.08em; padding-top: 3px; min-width: 24px; }
+  .dark-card-title { font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 4px; letter-spacing: -0.2px; }
+  .dark-card-body { font-size: 14px; color: var(--text-muted); font-weight: 300; line-height: 1.55; }
+
+  .rung {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px 28px;
+    flex-wrap: wrap;
+  }
+  .rung > div:first-child { flex: 1 1 300px; min-width: 0; }
+  .rung-price {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    color: var(--white);
+    white-space: nowrap;
+    flex: 0 0 auto;
+    font-variant-numeric: tabular-nums;
+  }
+  .dark-card.featured { background: var(--dark-4); border-color: rgba(59,130,246,0.35); }
+  .dark-card.featured .rung-price { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px var(--pad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px 24px;
+    flex-wrap: wrap;
+  }
+  .footer-brand { font-size: 14px; font-weight: 500; color: var(--white); }
+  .footer-contact { font-size: 13px; color: var(--text-muted); display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px; min-height: 44px; }
+  .footer-contact a { color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* ── JURISDICTION VISIBILITY ── */
+  .prov { display: none !important; }
+  .prov.on { display: block !important; }
+  .prov.on.as-grid { display: grid !important; }
+  .dark-card.prov.on { display: flex !important; }
+  span.prov.on, .tag.prov.on { display: inline-block !important; }
+
+  /* ── SMALL SCREENS: lift the 11px label sizes to stay legible ── */
+  @media (max-width: 640px) {
+    .hero-eyebrow,
+    .eyebrow,
+    .phase-num,
+    .savings-label,
+    .dark-card-num,
+    .jbar-label,
+    .field label { font-size: 12px; letter-spacing: 0.1em; }
+    .metric-label,
+    .hero-cred .l,
+    .footnote { font-size: 13px; }
+    .phase-timing { font-size: 13px; }
+    .phase-body,
+    .dark-card-body,
+    .savings-desc { font-size: 15px; }
+    .tag { font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body>
@@ -356,270 +493,522 @@
 <!-- NAV -->
 <nav>
   <a href="/" style="text-decoration:none;color:inherit;"><span class="nav-brand">Chassis Labs</span></a>
-  <span class="nav-meta"><a href="/ai" style="color:inherit;text-decoration:none;opacity:0.7;">Platform</a> &nbsp;·&nbsp; One-Day Building Turnover. Zero Deficiencies. &nbsp;·&nbsp; April 2026</span>
+  <span class="nav-meta"><a href="/ai" style="color:inherit;text-decoration:none;opacity:0.7;">Platform</a> &nbsp;·&nbsp; One-Day Building Turnover &nbsp;·&nbsp; BC &amp; Ontario</span>
 </nav>
+
+<!-- JURISDICTION SWITCH -->
+<div class="jbar">
+  <span class="jbar-label">Jurisdiction</span>
+  <div class="seg" role="group" aria-label="Select province">
+    <button type="button" data-prov="on" aria-pressed="true">Ontario</button>
+    <button type="button" data-prov="bc" aria-pressed="false">British Columbia</button>
+  </div>
+  <p class="jbar-note" id="jnote">Showing Tarion critical dates, registration timing and Ontario closing economics.</p>
+</div>
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">Zero-Deficiency Building Turnover</p>
-  <h1>One Day.<br><em>Every Owner.</em><br>Zero Deficiencies.</h1>
-  <p class="hero-sub">A structured 3–6 month consulting program that transforms building turnover from a month-long scramble into a single, coordinated day — delivering every homeowner a completed, deficiency-free unit.</p>
-  <a href="mailto:info@chassislabs.ai" class="pill-btn">info@chassislabs.ai</a>
+  <p class="hero-eyebrow">One-Day Building Turnover</p>
+  <h1>Hit the date.<br><em>Every unit.</em><br>Every owner.</h1>
+  <p class="hero-sub">A structured 3&ndash;6 month consulting program that turns building turnover from a month-long scramble into a single coordinated day. Run by a team that has closed out more than 15,000 homes in Canada.</p>
+  <div class="cta-row">
+    <a href="mailto:info@chassislabs.com?subject=OneDay%20Turnover%20Review" class="pill-btn">Start a conversation</a>
+    <a href="#exposure" class="pill-btn ghost">See your exposure</a>
+  </div>
+  <div class="hero-cred">
+    <div><div class="n">15,000+</div><div class="l">Homes closed out across Canada</div></div>
+    <div><div class="n">4</div><div class="l">Developer customer care programs led</div></div>
+    <div><div class="n">3&ndash;6 mo</div><div class="l">Typical engagement runway</div></div>
+    <div><div class="n">BC + ON</div><div class="l">Both warranty regimes, one method</div></div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- WHAT IS IT -->
+<!-- THE PROBLEM -->
 <section class="section-light">
   <p class="eyebrow">The Problem</p>
   <h2 class="section-title">Rolling turnovers cost more<br>than developers realize.</h2>
-  <p class="section-body">A one-month rolling key handover keeps 12–24 construction staff on site, accumulates financing costs on a fully-built asset, and delivers owners a first impression that doesn't match what they paid for. On a 200-unit project, the cost of that approach is measurable in the hundreds of thousands.</p>
+  <p class="section-body">A one-month rolling key handover keeps 12&ndash;24 construction staff on site, accumulates financing costs on a fully-built asset, and delivers owners a first impression that doesn't match what they paid for. Nobody chooses it. It happens because the turnover was never run as its own project.</p>
 
-  <div class="metric-row">
-    <div class="metric-cell">
-      <div class="metric-num">~$560K</div>
-      <div class="metric-label">Max carrying cost saved<br>on a $140M project</div>
+  <!-- Ontario -->
+  <div class="prov on" data-prov="on">
+    <div class="callout">
+      <strong>In Ontario it costs you in three places at once.</strong> Miss the Firm Occupancy Date and Tarion pays your purchasers $150 a day per unit. Let occupancy run long and the project carries debt while sale proceeds sit locked until registration. And every week a deficiency stays open is another week a wobbling purchaser has a reason not to close.
     </div>
-    <div class="metric-cell">
-      <div class="metric-num">20</div>
-      <div class="metric-label">Active site days<br>eliminated</div>
+    <div class="metric-row">
+      <div class="metric-cell">
+        <div class="metric-num sig">$150</div>
+        <div class="metric-label">Per day, per unit, in delayed occupancy compensation</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num sig">$7,500</div>
+        <div class="metric-label">Hard cap per unit, inclusive of the per diem and receipted expenses</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num sig">$1,500</div>
+        <div class="metric-label">Owed automatically per unit if the 10-day notice is missed</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">90</div>
+        <div class="metric-label">Days written notice to move a Tentative date or set the Firm date</div>
+      </div>
     </div>
-    <div class="metric-cell">
-      <div class="metric-num">12–24</div>
-      <div class="metric-label">Construction staff<br>stood down on Day 1</div>
+    <p class="footnote">Figures per Tarion's New Condominium Home Addendum. The 24 August 2026 forms govern agreements signed from 1 January 2027 and carry these amounts forward unchanged.</p>
+  </div>
+
+  <!-- BC -->
+  <div class="prov" data-prov="bc">
+    <div class="callout">
+      <strong>In BC the whole building completes together, which is exactly why the day has to work.</strong> The strata plan deposits at the Land Title Office, then completions and possessions land in a single window. There is no interim occupancy period to absorb a slow handover. If units are not ready, the cost lands on the schedule, on the 2-5-10 claim file, and on the first conversation every owner has about their new home.
     </div>
-    <div class="metric-cell">
-      <div class="metric-num">$1.0M</div>
-      <div class="metric-label">Total high-end savings<br>across all categories</div>
+    <div class="metric-row">
+      <div class="metric-cell">
+        <div class="metric-num">2 yr</div>
+        <div class="metric-label">Materials and labour coverage under 2-5-10</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">5 yr</div>
+        <div class="metric-label">Building envelope and water penetration</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">10 yr</div>
+        <div class="metric-label">Structural defects affecting load-bearing elements</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num sig">Day 1</div>
+        <div class="metric-label">Every item not caught becomes a warranty file you carry for a decade</div>
+      </div>
+    </div>
+    <p class="footnote">Coverage per the Homeowner Protection Act, administered through HPO-approved warranty providers. The clock runs from the occupancy permit date.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="savings-strip" id="exposure">
+  <p class="eyebrow eyebrow-on-dark">Your Numbers</p>
+  <div class="accent-line"></div>
+  <h2 class="section-title section-title-dark">Put your own<br>project in.</h2>
+  <p class="section-body section-body-dark">We are not going to model a hypothetical building and ask you to accept it. Enter your tower and see what the turnover is actually worth on your balance sheet.</p>
+
+  <div class="calc-wrap">
+    <form class="calc-inputs" id="calcform" onsubmit="return false">
+      <div class="field">
+        <label for="f-units">Units in the tower</label>
+        <input type="number" id="f-units" value="400" min="1" max="5000" step="1" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="f-price">Average unit price (CAD)</label>
+        <input type="number" id="f-price" value="800000" min="0" step="10000" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="f-rate">Project debt rate (% per year)</label>
+        <input type="number" id="f-rate" value="8.5" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field prov on" data-prov="on">
+        <label for="f-slip">Days past the Firm Occupancy Date</label>
+        <input type="number" id="f-slip" value="21" min="0" max="365" step="1" inputmode="numeric">
+      </div>
+      <div class="field prov on" data-prov="on">
+        <label for="f-occ">Months of interim occupancy</label>
+        <input type="number" id="f-occ" value="9" min="0" max="36" step="1" inputmode="numeric">
+      </div>
+      <div class="field prov on" data-prov="on">
+        <label for="f-debt">Project debt outstanding at occupancy (CAD)</label>
+        <input type="number" id="f-debt" value="200000000" min="0" step="1000000" inputmode="numeric">
+      </div>
+      <div class="field prov on" data-prov="on">
+        <label for="f-dep">Average deposit taken (%)</label>
+        <input type="number" id="f-dep" value="20" min="0" max="100" step="1" inputmode="decimal">
+      </div>
+      <div class="field prov" data-prov="bc">
+        <label for="f-days">Site days a rolling handover adds</label>
+        <input type="number" id="f-days" value="20" min="0" max="180" step="1" inputmode="numeric">
+      </div>
+    </form>
+
+    <div>
+      <!-- Ontario outputs -->
+      <div class="savings-grid prov on as-grid" data-prov="on">
+        <div class="savings-cell">
+          <div class="savings-label">Missed Notice</div>
+          <div class="savings-amount" id="o-notice">$600,000</div>
+          <div class="savings-desc">Owed if the 10-day Delayed Occupancy notice is missed. Pure administration, before anyone is actually late.</div>
+        </div>
+        <div class="savings-cell" style="background:var(--dark-4)">
+          <div class="savings-label">Delayed Occupancy</div>
+          <div class="savings-amount" id="o-tarion">$1,260,000</div>
+          <div class="savings-desc">Compensation at the slip you entered, capped at $7,500 per unit.</div>
+        </div>
+        <div class="savings-cell" style="background:var(--dark-4)">
+          <div class="savings-label">Uncovered Carry</div>
+          <div class="savings-amount" id="o-carry">$2,209,200</div>
+          <div class="savings-desc">Loan interest through occupancy, net of the occupancy fees you collect.</div>
+        </div>
+        <div class="savings-cell">
+          <div class="savings-label">Closing Risk</div>
+          <div class="savings-amount" id="o-close">40 units</div>
+          <div class="savings-desc" id="o-close-l">Back to inventory at the measured 10% failure rate, carrying roughly $2,720,000 a year while they sit.</div>
+        </div>
+      </div>
+
+      <!-- BC outputs -->
+      <div class="savings-grid prov as-grid" data-prov="bc">
+        <div class="savings-cell">
+          <div class="savings-label">Daily Carry</div>
+          <div class="savings-amount" id="b-daily">$74,521</div>
+          <div class="savings-desc">Carrying cost on the completed asset at the rate you entered.</div>
+        </div>
+        <div class="savings-cell" style="background:var(--dark-4)">
+          <div class="savings-label">Cost of the Drag</div>
+          <div class="savings-amount" id="b-total">$1,490,411</div>
+          <div class="savings-desc">What the site days a rolling handover adds are worth.</div>
+        </div>
+        <div class="savings-cell" style="background:var(--dark-4)">
+          <div class="savings-label">Staff Stood Down</div>
+          <div class="savings-amount">12&ndash;24</div>
+          <div class="savings-desc">Construction staff released on day one instead of week five.</div>
+        </div>
+        <div class="savings-cell">
+          <div class="savings-label">Warranty Tail</div>
+          <div class="savings-amount">10 yr</div>
+          <div class="savings-desc">How long every item you miss stays on the 2-5-10 file.</div>
+        </div>
+      </div>
+
+      <p class="footnote prov on" data-prov="on">Carry nets the interest you pay on project debt against the occupancy fees you collect. Under s.80(4) of the Condominium Act those fees are capped at the Bank of Canada one-year conventional rate, 5.49% as at September 2026, applied to each purchaser's unpaid balance. Anything your loan costs above that is uncovered. Closing risk uses the ~10% failure rate measured on units registered in 2025. Indicative only, and no substitute for your own model.</p>
+      <p class="footnote prov" data-prov="bc">Carrying cost is modelled as a blended opportunity and financing cost across total project value, consistent with how developers price standing completed inventory. Indicative only, and no substitute for your own model.</p>
     </div>
   </div>
 </section>
 
 <!-- PHASES -->
-<section class="section-light" style="padding-top:0">
+<section class="section-light">
   <p class="eyebrow">The Program</p>
   <h2 class="section-title">Five phases.<br>One outcome.</h2>
-  <p class="section-body">The program runs in parallel with construction — beginning 3–6 months before Occupancy Permit and culminating in a single, hospitality-grade Turnover Day.</p>
+  <p class="section-body prov on" data-prov="on">The program runs in parallel with construction, mobilising well before the Firm Occupancy Date and carrying through registration. Timings below anchor to first occupancy.</p>
+  <p class="section-body prov" data-prov="bc">The program runs in parallel with construction, beginning 3&ndash;6 months before Occupancy Permit and culminating in a single, hospitality-grade Turnover Day.</p>
 
   <div class="phases-grid">
     <div class="phase-card">
       <div class="phase-num">Phase 01</div>
       <div class="phase-title">QC Program Launch</div>
-      <div class="phase-timing">T-minus 90–120 days</div>
-      <div class="phase-body">QC coordinator appointed. Unit-by-unit tracking activated in Procore. Acceptance criteria defined. Building systems, signage, and amenities audited.</div>
+      <div class="phase-timing"><span class="prov on" data-prov="on">Day &minus;120 to &minus;90</span><span class="prov" data-prov="bc">T-minus 90&ndash;120 days</span></div>
+      <div class="phase-body">QC coordinator appointed and embedded. Unit-by-unit tracking activated in your construction system. Acceptance criteria defined and agreed with trades. Building systems, signage and amenities audited.</div>
+      <div class="phase-body prov on" data-prov="on"><strong>Ontario addition:</strong> a full audit of critical-date notices served to date against the Tarion Addendum, because the 90-day and 10-day windows are where the avoidable money goes.</div>
       <div class="phase-tags">
-        <span class="tag">Procore</span>
         <span class="tag">QC Coordinator</span>
-        <span class="tag">Standards</span>
+        <span class="tag">Unit Tracking</span>
+        <span class="tag prov on" data-prov="on">Notice Audit</span>
       </div>
     </div>
+
     <div class="phase-card">
       <div class="phase-num">Phase 02</div>
       <div class="phase-title">Trade Final Finish Inspections</div>
-      <div class="phase-timing">T-minus 60–90 days</div>
-      <div class="phase-body">Two-gate inspection model: trade self-certification followed by independent in-house QC sign-off. No unit advances until both gates are cleared.</div>
+      <div class="phase-timing"><span class="prov on" data-prov="on">Day &minus;90 to &minus;60</span><span class="prov" data-prov="bc">T-minus 60&ndash;90 days</span></div>
+      <div class="phase-body">Two-gate inspection model: trade self-certification followed by independent in-house QC sign-off. No unit advances until both gates are cleared. Throughput is modelled backwards from the handover date, so inspector count is a decision rather than a discovery.</div>
       <div class="phase-tags">
         <span class="tag">Gate 1</span>
         <span class="tag">Gate 2</span>
         <span class="tag">Deficiency Tracking</span>
       </div>
     </div>
+
     <div class="phase-card">
       <div class="phase-num">Phase 03</div>
-      <div class="phase-title">Homeowner Preparation</div>
-      <div class="phase-timing">T-minus 30–60 days</div>
-      <div class="phase-body">90 and 60-day closing letters. Appraisal coordination. Legal info collection. Juniper homeowner walkthrough launched. Storage and parking confirmed.</div>
+      <div class="phase-title">Purchaser Preparation</div>
+      <div class="phase-timing"><span class="prov on" data-prov="on">Day &minus;90 to &minus;30</span><span class="prov" data-prov="bc">T-minus 30&ndash;60 days</span></div>
+      <div class="phase-body">Staged closing letters. Appraisal coordination. Legal information collection. Homeowner walkthrough scheduling launched. Storage and parking confirmed.</div>
+      <div class="phase-body prov on" data-prov="on"><strong>Ontario addition:</strong> the purchaser list is segmented by closing risk while there is still time to act on it. Knowing at day &minus;90 which units are unlikely to close is worth more than finding out on closing day.</div>
       <div class="phase-tags">
-        <span class="tag">Juniper</span>
-        <span class="tag">Calendly</span>
-        <span class="tag">Legal Prep</span>
+        <span class="tag">Closing Letters</span>
+        <span class="tag">Appraisal</span>
+        <span class="tag prov on" data-prov="on">Closing Risk</span>
       </div>
     </div>
+
     <div class="phase-card">
       <div class="phase-num">Phase 04</div>
       <div class="phase-title">Turnover Week</div>
-      <div class="phase-timing">T-minus 7–14 days</div>
+      <div class="phase-timing"><span class="prov on" data-prov="on">Day &minus;14 to &minus;7</span><span class="prov" data-prov="bc">T-minus 7&ndash;14 days</span></div>
       <div class="phase-body">Units locked. Professional cleaning complete. Keys and fobs organized with transmittals. Elevator booking live. Final unit checks executed. Owner packages assembled.</div>
       <div class="phase-tags">
-        <span class="tag">Keys & Fobs</span>
+        <span class="tag">Keys &amp; Fobs</span>
         <span class="tag">Final Checks</span>
         <span class="tag">Logistics</span>
       </div>
     </div>
+
     <div class="phase-card">
       <div class="phase-num">Phase 05</div>
       <div class="phase-title">Turnover Day</div>
       <div class="phase-timing">The one-day event</div>
-      <div class="phase-body">Staggered appointments, staffed stations, guided walkthroughs. Owners sign off on zero-deficiency units. On-site trades for same-day resolution of any minor items.</div>
+      <div class="phase-body">Staggered appointments, staffed stations, guided walkthroughs. Owners sign off unit by unit, with trades on site for same-day resolution of any minor items.</div>
+      <div class="phase-body prov on" data-prov="on"><strong>Ontario addition:</strong> the PDI is run to Tarion's standard form with the Certificate of Completion and Possession completed inside the 15-day window, because this date starts every warranty clock that follows.</div>
       <div class="phase-tags">
         <span class="tag">Owner Walkthroughs</span>
-        <span class="tag">Move-In Coordination</span>
+        <span class="tag prov on" data-prov="on">PDI &amp; CCP</span>
+        <span class="tag prov" data-prov="bc">Move-In Coordination</span>
       </div>
     </div>
-    <div class="phase-card" style="background:var(--dark);border-color:rgba(255,255,255,0.08);">
-      <div class="phase-num" style="color:var(--text-muted)">Post-Turnover</div>
-      <div class="phase-title" style="color:var(--white)">30-Day Close-Out</div>
-      <div class="phase-timing" style="color:var(--text-muted)">Days 1–30</div>
-      <div class="phase-body" style="color:var(--text-muted)">Any Turnover Day items tracked and resolved within 30 days. Strata post-launch support. Internal debrief. Lessons-learned document for next phase.</div>
+
+    <div class="phase-card is-dark">
+      <div class="phase-num"><span class="prov on" data-prov="on">Through Registration</span><span class="prov" data-prov="bc">Post-Turnover</span></div>
+      <div class="phase-title"><span class="prov on" data-prov="on">Close-Out &amp; Registration</span><span class="prov" data-prov="bc">30-Day Close-Out</span></div>
+      <div class="phase-timing"><span class="prov on" data-prov="on">Occupancy to registration</span><span class="prov" data-prov="bc">Days 1&ndash;30</span></div>
+      <div class="phase-body prov on" data-prov="on">Turnover items tracked and resolved. Initial Form items managed inside the 120-day builder repair period. Registration critical path driven to the date, because that is when your capital is released. Board handover support, internal debrief and a lessons-learned document for the next phase.</div>
+      <div class="phase-body prov" data-prov="bc">Any Turnover Day items tracked and resolved within 30 days. Strata post-launch support. Internal debrief. Lessons-learned document for next phase.</div>
       <div class="phase-tags">
-        <span class="tag" style="background:var(--dark-3);border-color:rgba(255,255,255,0.08);color:var(--text-muted)">Deficiency Close-Out</span>
-        <span class="tag" style="background:var(--dark-3);border-color:rgba(255,255,255,0.08);color:var(--text-muted)">Strata Handover</span>
+        <span class="tag">Deficiency Close-Out</span>
+        <span class="tag">Strata Handover</span>
+        <span class="tag prov on" data-prov="on">Registration</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SAVINGS -->
-<section class="savings-strip">
-  <p class="eyebrow eyebrow-on-dark">Financial Case</p>
-  <h2 class="section-title section-title-dark">The numbers make<br>the case themselves.</h2>
-  <p class="section-body section-body-dark">Modelled on a representative 200-unit project at ~$140M total value. Combined carrying cost of $28,000/day (30% equity at 8% opportunity cost; 70% debt at 7% construction financing), over 20 active site days eliminated.</p>
-
-  <div class="savings-grid">
-    <div class="savings-cell">
-      <div class="savings-label">Conservative</div>
-      <div class="savings-amount">$462K</div>
-      <div class="savings-desc">Low-end estimate</div>
-    </div>
-    <div class="savings-cell" style="background:var(--dark-4)">
-      <div class="savings-label">Mid-Range</div>
-      <div class="savings-amount">$715K</div>
-      <div class="savings-desc">Most likely outcome</div>
-    </div>
-    <div class="savings-cell">
-      <div class="savings-label">Full Upside</div>
-      <div class="savings-amount">$1.02M</div>
-      <div class="savings-desc">High-end estimate</div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT WE BRING -->
+<!-- ENGAGEMENT -->
 <section class="section-dark-2">
   <p class="eyebrow eyebrow-on-dark">The Engagement</p>
   <h2 class="section-title section-title-dark">Embedded, not advisory.</h2>
-  <p class="section-body section-body-dark">Chassis Labs sits alongside your HOC and Construction teams for the full turnover runway — owning the QC program and accountable for the outcome on Turnover Day.</p>
+  <p class="section-body section-body-dark">Chassis Labs sits alongside your customer care and construction teams for the full turnover runway, owning the QC program and accountable for the outcome on the day. Start with the review. It is scoped so you can approve it without a board.</p>
 
   <div class="dark-cards">
+    <div class="dark-card featured">
+      <div class="rung" style="width:100%">
+        <div>
+          <div class="dark-card-title">Turnover Exposure Review</div>
+          <div class="dark-card-body">One tower, three weeks. Critical-date notice audit, inspection throughput model, deficiency backlog projection, purchaser closing-risk segmentation and a registration critical path. You own the output whether or not we work together afterwards.</div>
+        </div>
+        <div class="rung-price">$12,500 fixed</div>
+      </div>
+    </div>
+    <div class="dark-card">
+      <div class="rung" style="width:100%">
+        <div>
+          <div class="dark-card-title">Turnover Program</div>
+          <div class="dark-card-body">Full engagement from mobilisation to the last key handed over. Program design, cross-department alignment, weekly progress reviews, and on-site leadership for the event itself.</div>
+        </div>
+        <div class="rung-price">Per unit</div>
+      </div>
+    </div>
+    <div class="dark-card">
+      <div class="rung" style="width:100%">
+        <div>
+          <div class="dark-card-title"><span class="prov on" data-prov="on">Registration Sprint</span><span class="prov" data-prov="bc">Completion Sprint</span></div>
+          <div class="dark-card-body prov on" data-prov="on">Retainer through to registration, with a success fee tied to the registration date against the baseline set in the review, and to closing conversion. We take the risk with you.</div>
+          <div class="dark-card-body prov" data-prov="bc">Retainer through completion, with a success fee tied to the handover date against the baseline set in the review, and to deficiency close-out rate. We take the risk with you.</div>
+        </div>
+        <div class="rung-price">Retainer + success</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-cards" style="margin-top:12px">
     <div class="dark-card">
       <div class="dark-card-num">01</div>
       <div>
-        <div class="dark-card-title">Zero-Deficiency Turnover Framework</div>
-        <div class="dark-card-body">Complete program design — process, checklists, timelines, and tracking tools — deployed from Day 1 of the engagement.</div>
+        <div class="dark-card-title">Turnover Framework</div>
+        <div class="dark-card-body">Complete program design &mdash; process, checklists, timelines and tracking tools &mdash; deployed from day one of the engagement.</div>
       </div>
     </div>
     <div class="dark-card">
       <div class="dark-card-num">02</div>
       <div>
-        <div class="dark-card-title">Technology Configuration</div>
-        <div class="dark-card-body">Procore (from framing/rough-in), Juniper developer and homeowner walkthrough workflows (3–6 months and 1–2 months from OP), and Calendly — each configured and deployed independently.</div>
+        <div class="dark-card-title">System Configuration</div>
+        <div class="dark-card-body">We work in your stack. Construction QC, homeowner walkthrough workflow and scheduling, each configured against the turnover date rather than the other way round.</div>
       </div>
     </div>
     <div class="dark-card">
       <div class="dark-card-num">03</div>
       <div>
         <div class="dark-card-title">Cross-Department Alignment</div>
-        <div class="dark-card-body">Bridging Construction, HOC, Sales, and Strata into a single coordinated process — with weekly progress reviews throughout the runway.</div>
+        <div class="dark-card-body">Bridging Construction, Customer Care, Sales and Strata into a single coordinated process, with weekly progress reviews throughout the runway.</div>
       </div>
     </div>
     <div class="dark-card">
       <div class="dark-card-num">04</div>
       <div>
         <div class="dark-card-title">Turnover Day Execution</div>
-        <div class="dark-card-body">On-site leadership and real-time issue management for the full event — plus a 30-day post-turnover review and close-out report.</div>
+        <div class="dark-card-body">On-site leadership and real-time issue management for the full event, plus a post-turnover review and close-out report.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ARIA SECTION -->
+<!-- ARIA -->
 <section class="section-dark" style="border-top: 1px solid var(--border);">
   <p class="eyebrow eyebrow-on-dark">After Turnover Day</p>
   <h2 class="section-title section-title-dark">Aria by Chassis Labs.</h2>
-  <p class="section-body section-body-dark">The moment keys change hands, a new operational layer begins. Aria is Chassis Labs' flagship AI agent for homeowner warranty and customer service — purpose-built for BC real estate developers. It handles the post-closing service layer so your HOC team doesn't have to.</p>
+  <p class="section-body section-body-dark prov on" data-prov="on">The moment keys change hands, a statutory clock starts on every unit and runs for seven years. Aria is our flagship AI agent for homeowner warranty and customer service, built for that obligation rather than bolted onto it.</p>
+  <p class="section-body section-body-dark prov" data-prov="bc">The moment keys change hands, a ten-year warranty obligation begins on every unit. Aria is our flagship AI agent for homeowner warranty and customer service, built for that obligation rather than bolted onto it.</p>
 
-  <div class="dark-cards" style="margin-top:48px">
+  <div class="dark-cards">
     <div class="dark-card">
       <div class="dark-card-num">01</div>
       <div>
         <div class="dark-card-title">Warranty Inquiry Handling</div>
-        <div class="dark-card-body">Aria manages inbound homeowner warranty requests 24/7 across chat, email, phone, and SMS — resolving common inquiries instantly and routing complex claims to the right contact without delay.</div>
+        <div class="dark-card-body">Aria manages inbound homeowner warranty requests 24/7 across chat, email, phone and SMS &mdash; resolving common inquiries instantly and routing complex claims to the right contact without delay.</div>
       </div>
     </div>
-    <div class="dark-card">
+    <div class="dark-card prov on" data-prov="on">
+      <div class="dark-card-num">02</div>
+      <div>
+        <div class="dark-card-title">Tarion Form Management</div>
+        <div class="dark-card-body">Every unit is tracked against its own Initial, Mid-Year and Year-End windows, with items captured and evidenced before each auto-submission date rather than after it.</div>
+      </div>
+    </div>
+    <div class="dark-card prov" data-prov="bc">
       <div class="dark-card-num">02</div>
       <div>
         <div class="dark-card-title">2-5-10 Claim Triage</div>
-        <div class="dark-card-body">Aria classifies every inbound claim against BC's 2-5-10 warranty program, ensuring the correct coverage period is applied and the right builder or trade is engaged — automatically and on record.</div>
+        <div class="dark-card-body">Aria classifies every inbound claim against BC's 2-5-10 warranty program, ensuring the correct coverage period is applied and the right builder or trade is engaged &mdash; automatically and on record.</div>
       </div>
     </div>
     <div class="dark-card">
       <div class="dark-card-num">03</div>
       <div>
         <div class="dark-card-title">Trade Callback Scheduling</div>
-        <div class="dark-card-body">Warranty trade visits are scheduled directly through Aria — homeowners book their own appointments, confirmations are automated, and the developer maintains a full audit trail without manual coordination.</div>
+        <div class="dark-card-body">Warranty trade visits are scheduled directly through Aria &mdash; homeowners book their own appointments, confirmations are automated, and the developer maintains a full audit trail without manual coordination.</div>
       </div>
     </div>
     <div class="dark-card">
       <div class="dark-card-num">04</div>
       <div>
-        <div class="dark-card-title">Builder Routing & Escalation</div>
+        <div class="dark-card-title">Builder Routing &amp; Escalation</div>
         <div class="dark-card-body">Issues that fall outside standard warranty scope are routed to the right team member instantly. Aria monitors open items, flags delays, and escalates before homeowners have to follow up a second time.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BESPOKE AI SECTION -->
+<!-- CLOSE -->
 <section class="section-dark-2" style="border-top: 1px solid var(--border);">
-  <p class="eyebrow eyebrow-on-dark">Optional Engagement Layer</p>
-  <h2 class="section-title section-title-dark">Purpose-Built AI<br>for the Turnover Runway.</h2>
-  <p class="section-body section-body-dark">For clients who want to go further during the program itself, Chassis Labs designs and deploys bespoke AI capabilities tailored to the turnover engagement. Scoped per project and activated when you're ready.</p>
-
-  <div class="dark-cards" style="margin-top:48px">
-    <div class="dark-card">
-      <div class="dark-card-num">01</div>
-      <div>
-        <div class="dark-card-title">Predictive Deficiency Modelling</div>
-        <div class="dark-card-body">Historical deficiency data by trade, unit type, and floor is analyzed to predict where issues are most likely to emerge — so inspectors prioritize high-risk areas before they become schedule problems.</div>
-      </div>
-    </div>
-    <div class="dark-card">
-      <div class="dark-card-num">02</div>
-      <div>
-        <div class="dark-card-title">Photo-Based QC Review</div>
-        <div class="dark-card-body">Site reps upload unit photos at gate inspections. An AI model cross-references images against acceptance criteria, flagging finish deviations before a human inspector walks the floor — reducing inspection time and eliminating subjectivity.</div>
-      </div>
-    </div>
-    <div class="dark-card">
-      <div class="dark-card-num">03</div>
-      <div>
-        <div class="dark-card-title">Completion Velocity Forecasting</div>
-        <div class="dark-card-body">A real-time model tracks unit completion rates against the Turnover Day target and surfaces early warnings when the schedule is at risk — accounting for trade velocity, deficiency close-out rates, and inspection throughput.</div>
-      </div>
-    </div>
-    <div class="dark-card">
-      <div class="dark-card-num">04</div>
-      <div>
-        <div class="dark-card-title">Homeowner Communication Automation</div>
-        <div class="dark-card-body">AI-drafted, personalized closing communications and appointment confirmations triggered automatically by Juniper milestone completions — tailored to each homeowner's unit, timeline, and slot.</div>
-      </div>
-    </div>
-    <div class="dark-card">
-      <div class="dark-card-num">05</div>
-      <div>
-        <div class="dark-card-title">Post-Turnover Analytics</div>
-        <div class="dark-card-body">Deficiency pattern analysis generates trade performance scorecards — close-out rates, repeat item categories, average resolution times by trade. A data-backed basis for future procurement and continuous improvement.</div>
-      </div>
-    </div>
+  <p class="eyebrow eyebrow-on-dark">Next Step</p>
+  <div class="accent-line"></div>
+  <h2 class="section-title section-title-dark">Start with one tower.</h2>
+  <p class="section-body section-body-dark">Three weeks, fixed fee, and a number you can take to your CFO. If the review does not find more than it costs, you have lost three weeks of someone else's time and kept the analysis.</p>
+  <p class="section-body section-body-dark">Send the project name and the unit count and you will get the exposure figures back the same day.</p>
+  <div class="cta-row" style="margin-top:36px">
+    <a href="mailto:info@chassislabs.com?subject=OneDay%20Turnover%20Review" class="pill-btn">info@chassislabs.com</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <span class="footer-brand">Chassis Labs</span>
-  <span class="footer-contact">Ready to discuss? <a href="mailto:info@chassislabs.ai">info@chassislabs.ai</a></span>
+  <span class="footer-contact">Ready to discuss? <a href="mailto:info@chassislabs.com">info@chassislabs.com</a></span>
 </footer>
+
+<script>
+(function(){
+  var PROV = 'on';
+  var NOTES = {
+    on: 'Showing Tarion critical dates, registration timing and Ontario closing economics.',
+    bc: 'Showing 2-5-10 warranty context, Occupancy Permit timing and BC completion economics.'
+  };
+
+  function money(n){
+    if(!isFinite(n) || n < 0) n = 0;
+    return '$' + Math.round(n).toLocaleString('en-CA');
+  }
+  function num(id, fallback){
+    var el = document.getElementById(id);
+    if(!el) return fallback;
+    var v = parseFloat(el.value);
+    return (isFinite(v) && v >= 0) ? v : fallback;
+  }
+  function put(id, text){
+    var el = document.getElementById(id);
+    if(el) el.textContent = text;
+  }
+
+  function recalc(){
+    var units = num('f-units', 400);
+    var price = num('f-price', 800000);
+    var rate  = num('f-rate', 8.5);
+
+    if(PROV === 'on'){
+      var slip = num('f-slip', 21);
+      var occ  = num('f-occ', 9);
+      var debt = num('f-debt', 200000000);
+      var dep  = Math.min(num('f-dep', 20), 100);
+      var yrs  = occ / 12;
+
+      // Missed 10-day notice: $150 x 10 days on every unit.
+      put('o-notice', money(units * 1500));
+
+      // Delayed occupancy compensation, capped at $7,500 per unit.
+      put('o-tarion', money(units * Math.min(slip * 150, 7500)));
+
+      // Interest paid on project debt through occupancy, net of the
+      // occupancy fees collected. s.80(4) caps the fee interest at the
+      // BoC one-year conventional rate on each unpaid balance.
+      var paid = debt * (rate / 100) * yrs;
+      var collected = units * price * (1 - dep / 100) * 0.0549 * yrs;
+      put('o-carry', money(Math.max(paid - collected, 0)));
+
+      // Units that statistically do not close, and what holding them costs.
+      var back = Math.round(units * 0.10);
+      put('o-close', back.toLocaleString('en-CA') + (back === 1 ? ' unit' : ' units'));
+      put('o-close-l', 'Back to inventory at the measured 10% failure rate, carrying roughly ' +
+        money(back * price * (rate / 100)) + ' a year while they sit.');
+    } else {
+      var days = num('f-days', 20);
+      var daily = (units * price * (rate / 100)) / 365;
+      put('b-daily', money(daily));
+      put('b-total', money(daily * days));
+    }
+  }
+
+  function apply(prov, persist){
+    PROV = (prov === 'bc') ? 'bc' : 'on';
+
+    document.querySelectorAll('.prov').forEach(function(el){
+      el.classList.toggle('on', el.getAttribute('data-prov') === PROV);
+    });
+    document.querySelectorAll('.seg button').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-prov') === PROV));
+    });
+    put('jnote', NOTES[PROV]);
+
+    if(persist){
+      try { localStorage.setItem('cl_prov', PROV); } catch(e){}
+      try {
+        var u = new URL(window.location.href);
+        u.searchParams.set('prov', PROV);
+        history.replaceState(null, '', u);
+      } catch(e){}
+    }
+    recalc();
+  }
+
+  // Query param wins, then stored choice, then Ontario.
+  var initial = 'on';
+  try {
+    var q = new URLSearchParams(window.location.search).get('prov');
+    if(q === 'bc' || q === 'on'){
+      initial = q;
+    } else {
+      var saved = localStorage.getItem('cl_prov');
+      if(saved === 'bc' || saved === 'on') initial = saved;
+    }
+  } catch(e){}
+
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.getAttribute('data-prov'), true); });
+  });
+
+  var form = document.getElementById('calcform');
+  if(form){
+    form.addEventListener('input', recalc);
+    form.addEventListener('change', recalc);
+  }
+
+  apply(initial, false);
+})();
+</script>
 
 </body>
 </html>
