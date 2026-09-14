@@ -352,6 +352,9 @@
     overflow: hidden;
   }
   @media (max-width: 560px) { .savings-grid { grid-template-columns: 1fr; } }
+  .savings-grid.savings-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 700px) { .savings-grid.savings-grid-3 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .savings-grid.savings-grid-3 { grid-template-columns: 1fr; } }
   .savings-cell { background: var(--dark-3); padding: clamp(26px, 3.4vw, 36px) clamp(22px, 3vw, 32px); }
   .savings-label {
     font-size: 11px;
@@ -653,7 +656,7 @@
       </div>
 
       <!-- BC outputs -->
-      <div class="savings-grid prov as-grid" data-prov="bc">
+      <div class="savings-grid savings-grid-3 prov as-grid" data-prov="bc">
         <div class="savings-cell">
           <div class="savings-label">Daily Carry</div>
           <div class="savings-amount" id="b-daily">$74,521</div>
@@ -664,7 +667,7 @@
           <div class="savings-amount" id="b-total">$1,490,411</div>
           <div class="savings-desc">What the site days a rolling handover adds are worth.</div>
         </div>
-        <div class="savings-cell" style="background:var(--dark-4)">
+        <div class="savings-cell">
           <div class="savings-label">Staff Stood Down</div>
           <div class="savings-amount">12&ndash;24</div>
           <div class="savings-desc">Construction staff released on day one instead of week five.</div>
