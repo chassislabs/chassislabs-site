@@ -225,7 +225,7 @@
   .section-body {
     font-size: clamp(15px, 2vw, 17px);
     font-weight: 300;
-    color: #555;
+    color: #3F3F46;
     line-height: 1.7;
     max-width: 620px;
   }
@@ -276,17 +276,18 @@
   .callout {
     margin-top: 32px;
     padding: 24px 28px;
-    background: var(--accent-dim);
-    border: 1px solid rgba(59,130,246,0.22);
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-left: 3px solid var(--accent);
     border-radius: 16px;
     font-size: 15px;
     font-weight: 300;
     line-height: 1.65;
-    color: #333;
+    color: #444;
     max-width: 760px;
   }
   .callout strong { font-weight: 600; color: var(--dark); }
-  .callout-dark { color: var(--text-muted); }
+  .callout-dark { background: var(--dark-3); border-color: var(--border); border-left-color: var(--accent); color: var(--text-muted); }
   .callout-dark strong { color: var(--white); }
 
   /* ── PHASE CARDS ── */
@@ -314,7 +315,7 @@
   }
   .phase-title { font-size: 17px; font-weight: 600; color: var(--dark); margin-bottom: 8px; letter-spacing: -0.3px; }
   .phase-timing { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; font-weight: 400; }
-  .phase-body { font-size: 14px; color: #555; line-height: 1.6; font-weight: 300; }
+  .phase-body { font-size: 14px; color: #3F3F46; line-height: 1.6; font-weight: 300; }
   .phase-body + .phase-body { margin-top: 12px; }
   .phase-body strong { font-weight: 600; color: var(--dark); }
   .phase-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
@@ -535,8 +536,8 @@
 <!-- THE PROBLEM -->
 <section class="section-light">
   <p class="eyebrow">The Problem</p>
-  <h2 class="section-title">Rolling turnovers cost more<br>than developers realize.</h2>
-  <p class="section-body">A one-month rolling key handover keeps 12&ndash;24 construction staff on site, accumulates financing costs on a fully-built asset, and delivers owners a first impression that doesn't match what they paid for. Nobody chooses it. It happens because the turnover was never run as its own project. Our path to success begins with a regimented 200-point QC process that checks, and when necessary re-checks, the entirety of the home.</p>
+  <h2 class="section-title">Most developers don't know<br>a building can turn over in one day.</h2>
+  <p class="section-body">The rolling handover is treated as the only option, so nobody prices it. A month of staggered key releases keeps 12&ndash;24 construction staff on site, runs financing on a finished asset, and hands every owner a first impression that was still being fixed the week before. It is not a choice anyone makes. It is what happens when the turnover is never run as its own project. We have done it in a single day, at scale, on real buildings, and it starts with a regimented 200-point QC process that checks, and when necessary re-checks, every home before anyone is handed a key.</p>
 
   <!-- Ontario -->
   <div class="prov on" data-prov="on">
@@ -567,7 +568,7 @@
   <!-- BC -->
   <div class="prov" data-prov="bc">
     <div class="callout">
-      <strong>In BC the whole building completes together, which is exactly why the day has to work.</strong> The strata plan deposits at the Land Title Office, then completions and possessions land in a single window. There is no interim occupancy period to absorb a slow handover. If units are not ready, the cost lands on the schedule, on the 2-5-10 claim file, and on the first conversation every owner has about their new home.
+      <strong>In BC there is no interim occupancy to hide behind.</strong> Once the strata plan deposits and the occupancy permit issues, every owner is entitled to their home and the 2-5-10 clock starts on all of them at once. Most projects still hand keys out over weeks. Our program sets one date, works the building back from it, and delivers every unit on that day. The difference shows up on the schedule, on the claim file, and in the first conversation each owner has about the home they bought.
     </div>
     <div class="metric-row metric-row-3">
       <div class="metric-cell">
@@ -685,7 +686,7 @@
   <p class="eyebrow">The Program</p>
   <h2 class="section-title">Five phases.<br>One outcome.</h2>
   <p class="section-body prov on" data-prov="on">The program runs in parallel with construction, mobilising well before the Firm Occupancy Date and carrying through registration. Timings below anchor to first occupancy.</p>
-  <p class="section-body prov" data-prov="bc">The program runs in parallel with construction, beginning 3&ndash;6 months before Occupancy Permit and culminating in a single, hospitality-grade Turnover Day.</p>
+  <p class="section-body prov" data-prov="bc">The program runs in parallel with construction, beginning 3&ndash;6 months before Occupancy Permit and culminating in one hospitality-grade Turnover Day per block of roughly 100 homes.</p>
 
   <div class="phases-grid">
     <div class="phase-card">
@@ -742,10 +743,11 @@
       <div class="phase-num">Phase 05</div>
       <div class="phase-title">Turnover Day</div>
       <div class="phase-timing">The one-day event</div>
-      <div class="phase-body">Staggered appointments, staffed stations, guided walkthroughs. Owners sign off unit by unit, with trades on site for same-day resolution of any minor items.</div>
+      <div class="phase-body">This is the day the building becomes a community, and it is run like one. Owners arrive at a scheduled time and are greeted by name, walked through a home that is finished, cleaned and ready, and handed their keys in a moment worth remembering. Staffed stations move each family from welcome to walkthrough to sign-off to move-in booking without a queue. Trades stand by for the rare same-day item. Sales, Customer Care, Construction and <span class="prov on" data-prov="on">the property manager</span><span class="prov" data-prov="bc">the strata manager</span> are in the room together, so every question has an answer that day. It is a celebration by design, because a homeowner who is welcomed becomes an advocate, and one who is processed becomes a claim.</div>
       <div class="phase-body prov on" data-prov="on"><strong>Ontario addition:</strong> the PDI is run to Tarion's standard form with the Certificate of Completion and Possession completed inside the 15-day window, because this date starts every warranty clock that follows.</div>
       <div class="phase-tags">
-        <span class="tag">Owner Walkthroughs</span>
+        <span class="tag">Hosted Walkthroughs</span>
+        <span class="tag">Key Ceremony</span>
         <span class="tag prov on" data-prov="on">PDI &amp; CCP</span>
         <span class="tag prov" data-prov="bc">Move-In Coordination</span>
       </div>
@@ -786,19 +788,28 @@
       <div class="rung" style="width:100%">
         <div>
           <div class="dark-card-title">Turnover Program</div>
-          <div class="dark-card-body">Full engagement from mobilisation to the last key handed over. Program design, cross-department alignment, weekly progress reviews, and on-site leadership for the event itself.</div>
+          <div class="dark-card-body">Full engagement from mobilisation to the last key handed over. Program design, cross-department alignment, weekly progress reviews, and on-site leadership for the event itself. Minimum engagement $60,000.</div>
         </div>
-        <div class="rung-price">Per unit</div>
+        <div class="rung-price">$325&ndash;450 / unit</div>
       </div>
     </div>
     <div class="dark-card">
       <div class="rung" style="width:100%">
         <div>
           <div class="dark-card-title"><span class="prov on" data-prov="on">Registration Sprint</span><span class="prov" data-prov="bc">Completion Sprint</span></div>
-          <div class="dark-card-body prov on" data-prov="on">Retainer through to registration, with a success fee tied to the registration date against the baseline set in the review, and to closing conversion. We take the risk with you.</div>
-          <div class="dark-card-body prov" data-prov="bc">Retainer through completion, with a success fee tied to the handover date against the baseline set in the review, and to deficiency close-out rate. We take the risk with you.</div>
+          <div class="dark-card-body prov on" data-prov="on">Retainer through to registration, with a success fee tied to the registration date against the baseline set in the review, and to closing conversion. We take the risk with you. Success fee is 15% of exposure avoided against the Review baseline, capped at 2x the retainer.</div>
+          <div class="dark-card-body prov" data-prov="bc">Retainer through completion, with a success fee tied to the handover date against the baseline set in the review, and to deficiency close-out rate. We take the risk with you. Success fee is 15% of exposure avoided against the Review baseline, capped at 2x the retainer.</div>
         </div>
-        <div class="rung-price">Retainer + success</div>
+        <div class="rung-price">$10&ndash;15K / mo + success</div>
+      </div>
+    </div>
+    <div class="dark-card">
+      <div class="rung" style="width:100%">
+        <div>
+          <div class="dark-card-title">Turnover Day Only</div>
+          <div class="dark-card-body">You run the runway, we run the day. Event design, station staffing plan, run-of-show, on-site leadership and same-day issue command for one building. Best for teams with a strong QC bench who have never hosted a single-day handover.</div>
+        </div>
+        <div class="rung-price">$25&ndash;40K / event</div>
       </div>
     </div>
   </div>
