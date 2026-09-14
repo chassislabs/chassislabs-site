@@ -268,6 +268,9 @@
   .metric-label { font-size: 12px; color: var(--text-dim); font-weight: 400; line-height: 1.45; }
   @media (max-width: 880px) { .metric-row { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 460px) { .metric-row { grid-template-columns: 1fr; } }
+  .metric-row.metric-row-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 880px) { .metric-row.metric-row-3 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .metric-row.metric-row-3 { grid-template-columns: 1fr; } }
 
   /* ── CALLOUT ── */
   .callout {
@@ -563,7 +566,7 @@
     <div class="callout">
       <strong>In BC the whole building completes together, which is exactly why the day has to work.</strong> The strata plan deposits at the Land Title Office, then completions and possessions land in a single window. There is no interim occupancy period to absorb a slow handover. If units are not ready, the cost lands on the schedule, on the 2-5-10 claim file, and on the first conversation every owner has about their new home.
     </div>
-    <div class="metric-row">
+    <div class="metric-row metric-row-3">
       <div class="metric-cell">
         <div class="metric-num">2 yr</div>
         <div class="metric-label">Materials and labour coverage under 2-5-10</div>
@@ -575,10 +578,6 @@
       <div class="metric-cell">
         <div class="metric-num">10 yr</div>
         <div class="metric-label">Structural defects affecting load-bearing elements</div>
-      </div>
-      <div class="metric-cell">
-        <div class="metric-num sig">Day 1</div>
-        <div class="metric-label">Every item not caught becomes a warranty file you carry for a decade</div>
       </div>
     </div>
     <p class="footnote">Coverage per the Homeowner Protection Act, administered through HPO-approved warranty providers. The clock runs from the occupancy permit date.</p>
@@ -669,11 +668,6 @@
           <div class="savings-label">Staff Stood Down</div>
           <div class="savings-amount">12&ndash;24</div>
           <div class="savings-desc">Construction staff released on day one instead of week five.</div>
-        </div>
-        <div class="savings-cell">
-          <div class="savings-label">Warranty Tail</div>
-          <div class="savings-amount">10 yr</div>
-          <div class="savings-desc">How long every item you miss stays on the 2-5-10 file.</div>
         </div>
       </div>
 
