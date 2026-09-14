@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M Homes — Chassis Labs AI Demo</title>
+<title>Developer — Chassis Labs AI Demo</title>
 <style>
 /* ============================================================
    GLOBAL
@@ -18,11 +18,11 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 :root {
-  /* M Homes brand */
+  /* Developer brand */
   --mat-navy: #003C71;
   --mat-blue: #0090DA;
 
-  /* Demo accent (now driven by M Homes palette) */
+  /* Demo accent (now driven by Developer palette) */
   --blue: #0090DA;
   --blue-deep: #003C71;
   --bg: #0a0b0f;
@@ -33,8 +33,8 @@ html, body {
   --muted: #8a8e9a;
 
   /* System brand colors */
-  --dyn:  #0078D4;   /* Dynamics blue */
-  --jde:  #C74634;   /* Oracle red */
+  --dyn:  #0078D4;   /* CRM blue */
+  --jde:  #C74634;   /* ERP red */
   --bld:  #F2A030;   /* BuildPro orange */
   --vir:  #00A86B;   /* Virtuo green */
 }
@@ -891,7 +891,7 @@ button { font-family: inherit; cursor: pointer; }
   50% { transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 0 70px rgba(74,144,226,0.9); }
 }
 
-/* JDE quadrant */
+/* ERP quadrant */
 .sys-mini.jde-mini .sys-header { background: var(--jde); }
 .sys-mini.jde-mini .form-row {
   display: grid;
@@ -928,7 +928,7 @@ button { font-family: inherit; cursor: pointer; }
   text-transform: uppercase;
 }
 
-/* Dynamics quadrant */
+/* CRM quadrant */
 .sys-mini.dyn-mini .sys-header { background: var(--dyn); }
 .dyn-tab-row {
   background: #f3f2f1;
@@ -1421,7 +1421,7 @@ button { font-family: inherit; cursor: pointer; }
   animation: virNewBig 1.2s ease forwards;
 }
 
-/* JDE status row big change */
+/* ERP status row big change */
 @keyframes jdeFlashBig {
   0%   { background: transparent; }
   10%  { background: #fee2dc; }
@@ -1440,7 +1440,7 @@ button { font-family: inherit; cursor: pointer; }
   100% { transform: scale(1); }
 }
 
-/* Dynamics stage big change */
+/* CRM stage big change */
 @keyframes stageBigFlash {
   0%   { background: #f3f2f1; color: #605e5c; transform: scale(1); }
   20%  { background: #fef3c7; color: #92400e; transform: scale(1.12); }
@@ -1650,7 +1650,7 @@ button { font-family: inherit; cursor: pointer; }
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="brand">
-      <span class="brand-name">M Homes</span>
+      <span class="brand-name">Developer</span>
       <span class="brand-sub">Chassis Labs AI Demo</span>
     </div>
     <div class="tabs">
@@ -1668,7 +1668,7 @@ button { font-family: inherit; cursor: pointer; }
     <div class="scene active" id="scene-portal">
       <div class="portal-frame">
         <div class="portal-nav">
-          <div class="portal-logo">M Homes <span>· My Home</span></div>
+          <div class="portal-logo">Developer <span>· My Home</span></div>
           <a href="#" class="current">My Journey</a>
           <a href="#">Documents</a>
           <a href="#">Messages</a>
@@ -1717,7 +1717,7 @@ button { font-family: inherit; cursor: pointer; }
                   <div class="ico">📄</div>
                   <div class="body">
                     <div class="title">Your contract is countersigned</div>
-                    <div class="desc">Final PDF ready in Documents · From JDE Contracts</div>
+                    <div class="desc">Final PDF ready in Documents · From ERP Contracts</div>
                   </div>
                 </div>
                 <div class="action-card" id="actSchedule">
@@ -1759,7 +1759,7 @@ button { font-family: inherit; cursor: pointer; }
                 <div class="av" style="background:linear-gradient(135deg,#00A86B,#1B5FA8);">DK</div>
                 <div class="meta">
                   <div class="name">Dana Kim</div>
-                  <div class="role">Sales · Dynamics</div>
+                  <div class="role">Sales · CRM</div>
                 </div>
               </div>
             </div>
@@ -1781,7 +1781,7 @@ button { font-family: inherit; cursor: pointer; }
       <div class="emp-frame">
         <div class="emp-titlebar">
           <div class="waffle"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <span class="app-name">Dynamics 365</span>
+          <span class="app-name">CRM Platform</span>
           <span class="breadcrumb">› Sales Hub › Customers › Sarah Chen</span>
           <span class="stitched"><span class="pulse-dot"></span> 4 systems · live</span>
         </div>
@@ -1815,11 +1815,11 @@ button { font-family: inherit; cursor: pointer; }
             </div>
 
             <div class="emp-tile-grid">
-              <!-- DYNAMICS TILE -->
+              <!-- CRM TILE -->
               <div class="emp-tile dyn">
                 <div class="tile-head">
                   <span>Sales &amp; Relationship</span>
-                  <span class="src">DYNAMICS</span>
+                  <span class="src">CRM</span>
                 </div>
                 <div class="tile-body">
                   <div class="kv"><span class="k">Stage</span><span class="v">Active build</span></div>
@@ -1829,14 +1829,14 @@ button { font-family: inherit; cursor: pointer; }
                 </div>
               </div>
 
-              <!-- JDE TILE -->
+              <!-- ERP TILE -->
               <div class="emp-tile jde">
                 <div class="tile-head">
                   <span>Contract &amp; Finance</span>
-                  <span class="src">JDE</span>
+                  <span class="src">ERP</span>
                 </div>
                 <div class="tile-body">
-                  <div class="kv"><span class="k">Contract #</span><span class="v">JDE-2026-1428</span></div>
+                  <div class="kv"><span class="k">Contract #</span><span class="v">ERP-2026-1428</span></div>
                   <div class="kv"><span class="k">Total</span><span class="v">$847,500</span></div>
                   <div class="kv"><span class="k">Deposit</span><span class="v green">$84,750 received</span></div>
                   <div class="kv"><span class="k">Status</span><span class="v green">Countersigned · Mar 14</span></div>
@@ -1888,10 +1888,10 @@ button { font-family: inherit; cursor: pointer; }
       <div class="flow-header">
         <button class="flow-trigger" id="fireBtn">
           <span style="font-size:11px;">▶</span>
-          Sign contract in JDE
+          Sign contract in ERP
         </button>
         <h2>Watch one event ripple across all four systems</h2>
-        <span class="lede">Powered by Dataverse + Power Automate</span>
+        <span class="lede">Powered by the Integration Layer + Workflow Automation</span>
       </div>
 
       <div class="flow-stage" id="flowStage">
@@ -1920,17 +1920,17 @@ button { font-family: inherit; cursor: pointer; }
         <!-- Center hub -->
         <div class="hub" id="hub">EVENT<br/>BACKBONE</div>
 
-        <!-- TOP-LEFT: JDE -->
+        <!-- TOP-LEFT: ERP -->
         <div class="sys-mini jde-mini">
           <div class="sys-window">
             <div class="sys-header">
               <div class="traffic"><span></span><span></span><span></span></div>
-              JD Edwards EnterpriseOne · Contract Management
-              <span class="url">jde.chassis.local</span>
+              ERP · Contract Management
+              <span class="url">erp.chassis.local</span>
             </div>
-            <div class="jde-banner">F4801 · Sales Order Detail</div>
+            <div class="jde-banner">SO-4801 · Sales Order Detail</div>
             <div class="sys-body">
-              <div class="form-row" id="jdeRow"><span class="lbl">Contract #</span><span class="val">JDE-2026-1428</span></div>
+              <div class="form-row" id="jdeRow"><span class="lbl">Contract #</span><span class="val">ERP-2026-1428</span></div>
               <div class="form-row"><span class="lbl">Customer</span><span class="val">CHEN, SARAH</span></div>
               <div class="form-row"><span class="lbl">Lot ref</span><span class="val">MR-047</span></div>
               <div class="form-row"><span class="lbl">Total</span><span class="val">$847,500.00</span></div>
@@ -1940,13 +1940,13 @@ button { font-family: inherit; cursor: pointer; }
           </div>
         </div>
 
-        <!-- TOP-RIGHT: DYNAMICS -->
+        <!-- TOP-RIGHT: CRM -->
         <div class="sys-mini dyn-mini">
           <div class="sys-window">
             <div class="sys-header">
               <div class="traffic"><span></span><span></span><span></span></div>
-              Dynamics 365 · Sales Hub
-              <span class="url">org.crm.dynamics.com</span>
+              CRM Platform · Sales Hub
+              <span class="url">org.crm.internal.local</span>
             </div>
             <div class="dyn-tab-row">
               <div class="dt active">Summary</div>
@@ -2057,7 +2057,7 @@ button { font-family: inherit; cursor: pointer; }
         <div style="display:flex;align-items:center;gap:14px;">
           <h2 style="font-size:17px;font-weight:600;">A year later — Sarah submits a warranty ticket</h2>
         </div>
-        <span class="lede" style="margin-left:auto;">Customer-initiated · Portal → Virtuo → BuildPro → Dynamics</span>
+        <span class="lede" style="margin-left:auto;">Customer-initiated · Portal → Virtuo → BuildPro → CRM</span>
       </div>
 
       <div class="flow-stage" id="warrantyStage">
@@ -2083,8 +2083,8 @@ button { font-family: inherit; cursor: pointer; }
           <div class="sys-window">
             <div class="sys-header" style="background: var(--mat-navy);">
               <div class="traffic"><span></span><span></span><span></span></div>
-              M Homes · My Home (customer portal)
-              <span class="url">myhome.mattamy.com</span>
+              Developer · My Home (customer portal)
+              <span class="url">myhome.chassis.local</span>
             </div>
             <div class="prt-banner">SUBMIT A WARRANTY REQUEST · LOT 47</div>
             <div class="sys-body" style="padding: 12px 16px; background: #f7fafc;">
@@ -2173,13 +2173,13 @@ button { font-family: inherit; cursor: pointer; }
           </div>
         </div>
 
-        <!-- BOTTOM-RIGHT: DYNAMICS (CSAT flag + activity) -->
+        <!-- BOTTOM-RIGHT: CRM (CSAT flag + activity) -->
         <div class="sys-mini dyn-mini">
           <div class="sys-window">
             <div class="sys-header">
               <div class="traffic"><span></span><span></span><span></span></div>
-              Dynamics 365 · Customer Insights
-              <span class="url">org.crm.dynamics.com</span>
+              CRM Platform · Customer Insights
+              <span class="url">org.crm.internal.local</span>
             </div>
             <div class="dyn-tab-row">
               <div class="dt">Summary</div>
@@ -2263,16 +2263,16 @@ const TRANSCRIPTS = {
   portal: [
     "One portal. One login. Sarah sees her whole journey — across all four systems.",
     "Click <strong>Schedule your QA walkthrough</strong> — that single action will reach into BuildPro to book the slot.",
-    "Booked. The portal updated, BuildPro got the appointment, and Dynamics logged the touchpoint. <strong>Continue →</strong>"
+    "Booked. The portal updated, BuildPro got the appointment, and CRM logged the touchpoint. <strong>Continue →</strong>"
   ],
   employee: [
-    "Switch hats. The same customer — but now we're in Dana's seat. Same record, surfaced inside Dynamics 365.",
-    "These tiles aren't screenshots — they're <strong>live data from JDE, BuildPro, and Virtuo</strong>, stitched into one customer record.",
+    "Switch hats. The same customer — but now we're in Dana's seat. Same record, surfaced inside the CRM Platform.",
+    "These tiles aren't screenshots — they're <strong>live data from ERP, BuildPro, and Virtuo</strong>, stitched into one customer record.",
     "Click the recommended action. Dana acts here; BuildPro receives the booking automatically. <strong>Continue →</strong>"
   ],
   flow: [
-    "Now the magic. Watch what happens when one event fires in JDE.",
-    "Click <strong>Sign contract in JDE</strong> and watch the ripple.",
+    "Now the magic. Watch what happens when one event fires in ERP.",
+    "Click <strong>Sign contract in ERP</strong> and watch the ripple.",
     "Six events. Four systems. <strong>Continue →</strong> for the final scene."
   ],
   warranty: [
@@ -2492,7 +2492,7 @@ function triggerScheduleQA() {
   if (stage !== 0 || current !== 0) return;
   stage = 1;
   clearAttractors();
-  setTranscript("<strong>Booking…</strong> reaching out to BuildPro and Dynamics behind the scenes.");
+  setTranscript("<strong>Booking…</strong> reaching out to BuildPro and CRM behind the scenes.");
 
   // Show a brief sync animation showing the systems being updated
   showSyncOverlay({
@@ -2500,7 +2500,7 @@ function triggerScheduleQA() {
     steps: [
       { text: 'Reaching BuildPro to find a slot',  sys: 'bld' },
       { text: 'Confirming with Marcus Reeves [Site Lead]',     sys: 'bld' },
-      { text: 'Logging activity in Dynamics',      sys: 'dyn' },
+      { text: 'Logging activity in CRM',           sys: 'dyn' },
     ],
     onComplete: () => {
       // Visually "schedule" — animate the QA card transformation
@@ -2513,7 +2513,7 @@ function triggerScheduleQA() {
       qaCard.querySelector('.ico').style.background = 'var(--blue)';
       qaCard.querySelector('.ico').style.color = 'white';
 
-      setTranscript("<strong>Booked.</strong> The portal updated, BuildPro got the appointment, and Dynamics logged the touchpoint. <strong>Continue →</strong>");
+      setTranscript("<strong>Booked.</strong> The portal updated, BuildPro got the appointment, and CRM logged the touchpoint. <strong>Continue →</strong>");
       pulseNext(true);
     }
   });
@@ -2535,7 +2535,7 @@ function triggerEmpAction() {
     title: "Scheduling QA walkthrough across systems…",
     steps: [
       { text: 'BuildPro: reserving slot for Lot 47',          sys: 'bld' },
-      { text: 'Dynamics: logging activity on Sarah\'s record', sys: 'dyn' },
+      { text: 'CRM: logging activity on Sarah\'s record', sys: 'dyn' },
       { text: 'Virtuo: queuing customer notification',         sys: 'vir' },
     ],
     onComplete: () => {
@@ -2547,9 +2547,9 @@ function triggerEmpAction() {
         <span style="font-size:18px;">✓</span>
         <div>
           <strong>QA walkthrough scheduled for Apr 10, 10:00 AM.</strong>
-          Confirmation sent to Sarah · BuildPro updated · Activity logged in Dynamics.
+          Confirmation sent to Sarah · BuildPro updated · Activity logged in CRM.
           <span class="stitch bld">BuildPro</span>
-          <span class="stitch dyn">Dynamics</span>
+          <span class="stitch dyn">CRM</span>
           <span class="stitch vir">Virtuo</span>
         </div>`;
 
@@ -2638,7 +2638,7 @@ const hub = document.getElementById('hub');
 const evStream = document.getElementById('evStream');
 
 const events = [
-  { src: 'JDE',      txt: 'contract.signed',     dot: 'jde', flow: 'in'  },
+  { src: 'ERP',      txt: 'contract.signed',     dot: 'jde', flow: 'in'  },
   { src: 'BACKBONE', txt: 'event published',     dot: null,  flow: 'mid' },
   { src: 'DYN',      txt: 'stage → Build',       dot: 'dyn', flow: 'out' },
   { src: 'BLD',      txt: 'project.created',     dot: 'bld', flow: 'out' },
@@ -2751,10 +2751,10 @@ function fireEvent() {
   stage = 1;
   clearAttractors();
   fireBtn.disabled = true;
-  setTranscript("<strong>JDE:</strong> Sarah's contract is countersigned.");
+  setTranscript("<strong>ERP:</strong> Sarah's contract is countersigned.");
 
   // ========================================================
-  // T = 0  — JDE updates (the trigger)
+  // T = 0  — ERP updates (the trigger)
   // ========================================================
   spotlight('jde');
   document.getElementById('jdeStatus').textContent = 'COUNTERSIGNED';
@@ -2763,13 +2763,13 @@ function fireEvent() {
   document.getElementById('jdeStatusRow').classList.add('signed-big');
 
   sceneTimers.push(setTimeout(() => {
-    showCallout('jde', 'JD Edwards · Contract Management',
+    showCallout('jde', 'ERP · Contract Management',
       'Status updated to <strong>COUNTERSIGNED</strong>', 2200);
     logEvent(events[0]);
   }, 200));
 
   // ========================================================
-  // T = 2.5s  — pulse from JDE → hub, hub fires
+  // T = 2.5s  — pulse from ERP → hub, hub fires
   // ========================================================
   sceneTimers.push(setTimeout(() => {
     setTranscript("<strong>Event Backbone:</strong> publishing <code style='background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;font-size:11px;'>contract.signed</code>");
@@ -2784,10 +2784,10 @@ function fireEvent() {
   }, 3500));
 
   // ========================================================
-  // T = 5s — Dynamics receives, advances stage
+  // T = 5s — CRM receives, advances stage
   // ========================================================
   sceneTimers.push(setTimeout(() => {
-    setTranscript("<strong>Dynamics:</strong> pipeline advances <em>Contract → Build</em>.");
+    setTranscript("<strong>CRM:</strong> pipeline advances <em>Contract → Build</em>.");
     animatePulse('pulse-dyn', 500, 300, 750, 150, 1100);
   }, 5000));
 
@@ -2796,8 +2796,8 @@ function fireEvent() {
     logEvent(events[2]);
     document.getElementById('dynStage').classList.remove('active');
     document.getElementById('dynStageNext').classList.add('advancing-big');
-    document.getElementById('dynUpdated').innerHTML = 'Stage updated by <span style="color:var(--blue);font-weight:600;">Power Automate flow</span> · just now';
-    showCallout('dyn', 'Dynamics 365 · Sales Hub',
+    document.getElementById('dynUpdated').innerHTML = 'Stage updated by <span style="color:var(--blue);font-weight:600;">Workflow Automation</span> · just now';
+    showCallout('dyn', 'CRM Platform · Sales Hub',
       'Pipeline stage: <strong>Contract → Build</strong>', 2200);
   }, 6100));
 
@@ -2866,7 +2866,7 @@ fireBtn.addEventListener('click', fireEvent);
 
 // ============================================================
 //  SCENE 4 — WARRANTY LOOP fire sequence
-//  Direction: Portal → Backbone → Virtuo → BuildPro → Dynamics → back to Portal
+//  Direction: Portal → Backbone → Virtuo → BuildPro → CRM → back to Portal
 // ============================================================
 const warrantyFireBtn = document.getElementById('warrantyFireBtn');
 const warrantyHub = document.getElementById('warrantyHub');
@@ -2929,7 +2929,7 @@ function fireWarrantyEvent() {
   // ========================================================
   spotlight('prt');
   sceneTimers.push(setTimeout(() => {
-    showCallout('prt', 'M Homes · Customer Portal',
+    showCallout('prt', 'Developer · Customer Portal',
       'Ticket submitted: <strong>HVAC noise · Lot 47</strong>', 2200);
     logWarrantyEvent(warrantyEvents[0]);
   }, 200));
@@ -2989,10 +2989,10 @@ function fireWarrantyEvent() {
   }, 9600));
 
   // ========================================================
-  // T = 12s — Dynamics: CSAT-at-risk flag + activity log
+  // T = 12s — CRM: CSAT-at-risk flag + activity log
   // ========================================================
   sceneTimers.push(setTimeout(() => {
-    setTranscript("<strong>Dynamics:</strong> Sarah is flagged at-risk. Sales gets a heads-up before she calls.");
+    setTranscript("<strong>CRM:</strong> Sarah is flagged at-risk. Sales gets a heads-up before she calls.");
     clearSpotlight();
     animateWarrantyPulse('wpulse-dyn', HUB[0], HUB[1], DYN[0], DYN[1], 1100);
   }, 12000));
@@ -3003,7 +3003,7 @@ function fireWarrantyEvent() {
     document.getElementById('dynPlaceholder').style.display = 'none';
     document.getElementById('dynRiskFlag').style.display = 'block';
     document.getElementById('dynActivity').style.display = 'block';
-    showCallout('dyn', 'Dynamics 365 · Customer Insights',
+    showCallout('dyn', 'CRM Platform · Customer Insights',
       '<strong>At-risk flag set</strong> · proactive outreach queued', 2200);
   }, 13100));
 
@@ -3020,7 +3020,7 @@ function fireWarrantyEvent() {
     spotlight('prt');
     logWarrantyEvent(warrantyEvents[5]);
     document.getElementById('prtConfirm').style.display = 'block';
-    showCallout('prt', 'M Homes · Customer Portal',
+    showCallout('prt', 'Developer · Customer Portal',
       '<strong>Confirmed:</strong> Tom Walsh [HVAC Tech] · Tue 9–11 AM', 2200);
   }, 16600));
 
