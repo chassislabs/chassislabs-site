@@ -88,7 +88,7 @@
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--text-muted);
     flex: 0 0 auto;
   }
   .seg {
@@ -192,7 +192,7 @@
     line-height: 1;
     margin-bottom: 8px;
   }
-  .hero-cred .l { font-size: 12px; color: var(--text-dim); font-weight: 400; line-height: 1.45; }
+  .hero-cred .l { font-size: 12px; color: var(--text-muted); font-weight: 400; line-height: 1.45; }
 
   /* ── DIVIDER ── */
   .divider { height: 1px; background: var(--border); margin: 0 var(--pad); }
@@ -242,6 +242,7 @@
     max-width: 680px;
     margin-top: 20px;
   }
+  .savings-strip .footnote { color: var(--text-muted); }
 
   /* ── METRIC ROW ── */
   .metric-row {
@@ -390,7 +391,7 @@
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--text-muted);
     margin-bottom: 8px;
     line-height: 1.4;
   }
@@ -498,19 +499,18 @@
 
 <!-- JURISDICTION SWITCH -->
 <div class="jbar">
-  <span class="jbar-label">Jurisdiction</span>
+  <span class="jbar-label">Currently servicing:</span>
   <div class="seg" role="group" aria-label="Select province">
     <button type="button" data-prov="on" aria-pressed="true">Ontario</button>
     <button type="button" data-prov="bc" aria-pressed="false">British Columbia</button>
   </div>
-  <p class="jbar-note" id="jnote">Showing Tarion critical dates, registration timing and Ontario closing economics.</p>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">One-Day Building Turnover</p>
-  <h1>Hit the date.<br><em>Every unit.</em><br>Every owner.</h1>
-  <p class="hero-sub">A structured 3&ndash;6 month consulting program that turns building turnover from a month-long scramble into a single coordinated day. Run by a team that has closed out more than 15,000 homes in Canada.</p>
+  <p class="hero-eyebrow">One-Day, One-Hundred Home building occupancy.</p>
+  <h1>Hit the date.<br><em>Every unit.</em><br>Every owner.<br>Concierge experience.<br>Celebrate.</h1>
+  <p class="hero-sub">A structured 3&ndash;6 month consulting program that turns a building turnover from a month-long scramble into a single coordinated day per approximately 100 homes. Run by a team with over a decade of experience &mdash; having closed out more than 15,000 homes in BC, Alberta &amp; Ontario.</p>
   <div class="cta-row">
     <a href="mailto:info@chassislabs.com?subject=OneDay%20Turnover%20Review" class="pill-btn">Start a conversation</a>
     <a href="#exposure" class="pill-btn ghost">See your exposure</a>
@@ -529,7 +529,7 @@
 <section class="section-light">
   <p class="eyebrow">The Problem</p>
   <h2 class="section-title">Rolling turnovers cost more<br>than developers realize.</h2>
-  <p class="section-body">A one-month rolling key handover keeps 12&ndash;24 construction staff on site, accumulates financing costs on a fully-built asset, and delivers owners a first impression that doesn't match what they paid for. Nobody chooses it. It happens because the turnover was never run as its own project.</p>
+  <p class="section-body">A one-month rolling key handover keeps 12&ndash;24 construction staff on site, accumulates financing costs on a fully-built asset, and delivers owners a first impression that doesn't match what they paid for. Nobody chooses it. It happens because the turnover was never run as its own project. Our path to success begins with a regimented 200-point QC process that checks, and when necessary re-checks, the entirety of the home.</p>
 
   <!-- Ontario -->
   <div class="prov on" data-prov="on">
@@ -589,7 +589,7 @@
   <p class="eyebrow eyebrow-on-dark">Your Numbers</p>
   <div class="accent-line"></div>
   <h2 class="section-title section-title-dark">Put your own<br>project in.</h2>
-  <p class="section-body section-body-dark">We are not going to model a hypothetical building and ask you to accept it. Enter your tower and see what the turnover is actually worth on your balance sheet.</p>
+  <p class="section-body section-body-dark">We are not going to model a hypothetical building and ask you to accept it. Enter your specifics and see what the turnover is actually worth on your balance sheet.</p>
 
   <div class="calc-wrap">
     <form class="calc-inputs" id="calcform" onsubmit="return false">
@@ -694,7 +694,7 @@
       <div class="phase-num">Phase 01</div>
       <div class="phase-title">QC Program Launch</div>
       <div class="phase-timing"><span class="prov on" data-prov="on">Day &minus;120 to &minus;90</span><span class="prov" data-prov="bc">T-minus 90&ndash;120 days</span></div>
-      <div class="phase-body">QC coordinator appointed and embedded. Unit-by-unit tracking activated in your construction system. Acceptance criteria defined and agreed with trades. Building systems, signage and amenities audited.</div>
+      <div class="phase-body">QC coordinator appointed and embedded. Unit-by-unit tracking activated in your construction system. Acceptance criteria defined and agreed upon by trades to set a standard of finish that carries across all homes. Building systems, signage and amenities audited.</div>
       <div class="phase-body prov on" data-prov="on"><strong>Ontario addition:</strong> a full audit of critical-date notices served to date against the Tarion Addendum, because the 90-day and 10-day windows are where the avoidable money goes.</div>
       <div class="phase-tags">
         <span class="tag">QC Coordinator</span>
@@ -707,7 +707,7 @@
       <div class="phase-num">Phase 02</div>
       <div class="phase-title">Trade Final Finish Inspections</div>
       <div class="phase-timing"><span class="prov on" data-prov="on">Day &minus;90 to &minus;60</span><span class="prov" data-prov="bc">T-minus 60&ndash;90 days</span></div>
-      <div class="phase-body">Two-gate inspection model: trade self-certification followed by independent in-house QC sign-off. No unit advances until both gates are cleared. Throughput is modelled backwards from the handover date, so inspector count is a decision rather than a discovery.</div>
+      <div class="phase-body">Two-gate inspection model: trade self-certification followed by independent in-house QC sign-off. No unit advances until both gates are cleared. We calculate backwards from the fixed handover date to how many units must clear inspection per day, so the number of inspectors on site is planned in advance rather than discovered too late.</div>
       <div class="phase-tags">
         <span class="tag">Gate 1</span>
         <span class="tag">Gate 2</span>
@@ -732,7 +732,7 @@
       <div class="phase-num">Phase 04</div>
       <div class="phase-title">Turnover Week</div>
       <div class="phase-timing"><span class="prov on" data-prov="on">Day &minus;14 to &minus;7</span><span class="prov" data-prov="bc">T-minus 7&ndash;14 days</span></div>
-      <div class="phase-body">Units locked. Professional cleaning complete. Keys and fobs organized with transmittals. Elevator booking live. Final unit checks executed. Owner packages assembled.</div>
+      <div class="phase-body">Deficiencies complete. Homes sparkling from a thorough deep clean, including hard-to-reach areas. Keys and fobs organized with transmittals. Elevator bookings live and strata services, rules and regulations in place for a turnkey-ready homeowner experience. Final unit checks executed. Owner packages assembled. Event day setup prep completed, and finally a staff meeting to provide a thorough run-through of the big day.</div>
       <div class="phase-tags">
         <span class="tag">Keys &amp; Fobs</span>
         <span class="tag">Final Checks</span>
