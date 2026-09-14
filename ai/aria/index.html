@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ARIA – Warranty Support | Chassis Labs</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background-color: #0e0f12; color: #fff; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
-nav { display: flex; align-items: center; justify-content: space-between; height: 50px; padding: 0 24px; border-bottom: 1px solid #1f2028; background-color: #0e0f12; flex-shrink: 0; }
-.nav-left { display: flex; align-items: center; gap: 32px; }
-.logo { font-size: 16px; font-weight: 600; color: #fff; text-decoration: none; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background-color: #0e0f12; color: #fff; height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+nav { display: flex; align-items: center; justify-content: space-between; min-height: 50px; padding: 8px 24px; border-bottom: 1px solid #1f2028; background-color: #0e0f12; flex-shrink: 0; flex-wrap: wrap; gap: 6px 16px; }
+.nav-left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.logo { font-size: 16px; font-weight: 600; color: #fff; text-decoration: none; display: inline-flex; align-items: center; min-height: 32px; }
 .logo:hover { opacity: 0.8; }
 .nav-badge { display: inline-flex; align-items: center; background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-.nav-right { display: flex; align-items: center; gap: 24px; }
-.nav-link { color: #aaa; text-decoration: none; font-size: 14px; }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-link { color: #aaa; text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; min-height: 32px; }
 .nav-link:hover { color: #fff; }
-.chat-container { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-.messages { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.chat-container { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+.messages { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; -webkit-overflow-scrolling: touch; }
 .messages::-webkit-scrollbar { width: 6px; }
 .messages::-webkit-scrollbar-track { background: transparent; }
 .messages::-webkit-scrollbar-thumb { background-color: #1f2028; border-radius: 4px; }
@@ -31,14 +32,24 @@ nav { display: flex; align-items: center; justify-content: space-between; height
 .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes bounce { 0%,60%,100% { opacity: 0.4; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-6px); } }
-.input-area { display: flex; gap: 10px; padding: 14px 24px; border-top: 1px solid #1f2028; background-color: #0e0f12; flex-shrink: 0; }
-.input-field { flex: 1; background-color: #13141a; border: 1px solid #1f2028; border-radius: 8px; padding: 11px 14px; color: #fff; font-size: 14px; font-family: inherit; transition: border-color 0.2s; }
+.input-area { display: flex; gap: 10px; padding: 14px 24px; border-top: 1px solid #1f2028; background-color: #0e0f12; flex-shrink: 0; padding-bottom: max(14px, env(safe-area-inset-bottom)); }
+.input-field { flex: 1; min-height: 44px; background-color: #13141a; border: 1px solid #1f2028; border-radius: 8px; padding: 11px 14px; color: #fff; font-size: 16px; font-family: inherit; transition: border-color 0.2s; }
 .input-field:focus { outline: none; border-color: #685FFF; }
 .input-field::placeholder { color: #555; }
-.send-button { background-color: #685FFF; border: none; border-radius: 8px; padding: 11px 22px; color: #fff; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 0.2s, opacity 0.2s; flex-shrink: 0; }
+.send-button { background-color: #685FFF; border: none; border-radius: 8px; padding: 11px 22px; min-height: 44px; min-width: 44px; color: #fff; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 0.2s, opacity 0.2s; flex-shrink: 0; }
 .send-button:hover:not(:disabled) { background-color: #7a73ff; }
 .send-button:disabled { opacity: 0.5; cursor: not-allowed; }
-@media (max-width: 600px) { .message.user .message-content, .message.aria .message-content { max-width: 88%; } nav { padding: 0 14px; } .messages { padding: 14px; } .input-area { padding: 10px 14px; } }
+@media (max-width: 600px) {
+  .message.user .message-content, .message.aria .message-content { max-width: 88%; }
+  nav { padding: 8px 14px; }
+  .nav-left { gap: 10px; }
+  .nav-right { gap: 14px; }
+  .messages { padding: 14px; }
+  .input-area { padding: 10px 14px; padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+}
+@media (max-width: 360px) {
+  .nav-badge { display: none; }
+}
 </style>
 </head>
 <body>
